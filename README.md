@@ -15,12 +15,13 @@ Pourquoi l'intégration React ? Déjà parce que React, c'est cool et que j'aime
 ### Ce qu'il y a à faire en WordPress :
 ```bash
 Création des Pods 
-  -Evenements
-  -Propositions d'aménagements
-  -Tarifs
-  -Matériel à louer
+  -Evenements 👌
+  -Propositions d aménagements 👌
+  -Tarifs 👌
+  -Matériel à louer 👌
+  -Forfaits 👌
 
-Page d'accueil
+Page d accueil
 Page de contact
 ```
 
@@ -34,7 +35,7 @@ Design des pages
   -Evenement
   -Matériel
   -Contact
-  -Login
+  -Login admin
 
 
 Call Api WP pour récupérer les pods et les afficher sur les pages
@@ -42,6 +43,9 @@ Call Api WP pour récupérer les pods et les afficher sur les pages
   -Service Aménagements
   -Service Tarifs
   -Service Matériel à louer
+
+Implémenter les services dans les pages correspondantes
+Mise en place du Routing
 ````
 
   
