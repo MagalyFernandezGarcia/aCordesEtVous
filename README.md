@@ -67,5 +67,13 @@ C'est tout ce que la personne a demandé à avoir sur son site. Cependant...
   -Plugin WP Facebook/Instagram
 ```
 
+## Design attendu
+
+
+![Accueil](https://github.com/user-attachments/assets/d45caeb0-2200-4bf1-9ef1-bdaee631ef39)
+
+![Salle](https://github.com/user-attachments/assets/10d4b574-9c87-4706-8f45-1109c4efa132)
+
+![Events](https://github.com/user-attachments/assets/6fe9de5d-634b-4f92-a7f8-6e2963059b2b)
 
   
