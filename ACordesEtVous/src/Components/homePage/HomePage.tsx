@@ -26,7 +26,7 @@ const HomePage = () => {
     const cardList = cards.map((card) => {
         return (
             <div key={card.id} className="card">
-                <p>{card.titre}</p>
+                <h2>{card.titre}</h2>
                 <img className="cardImage" src={card.image_de_la_carte.guid} alt="illustration du service" />
             </div>
         )
