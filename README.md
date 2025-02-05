@@ -29,7 +29,7 @@ Page de contact
 ### Ce qu'il y a à faire en React
 ```bash
 Design des pages
-  -Accueil
+  -Accueil 👌
   -Salle
   -Café/Bar
   -Evenement
@@ -43,6 +43,7 @@ Call Api WP pour récupérer les pods et les afficher sur les pages
   -Service Aménagements
   -Service Tarifs
   -Service Matériel à louer
+  -Service liste des services 👌
 
 Implémenter les services dans les pages correspondantes
 Mise en place du Routing
