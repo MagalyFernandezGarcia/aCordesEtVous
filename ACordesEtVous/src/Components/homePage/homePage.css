@@ -60,10 +60,12 @@
 }
 
 .info{
+  font-weight: bold;
   text-shadow: 2px 2px 2px black;
   order: 1;
   position: absolute;
   left: 1rem;
+ 
 }
 
 .card:hover{
@@ -101,5 +103,6 @@
  }
  .info{
   position: relative;
+  
  }
 }
