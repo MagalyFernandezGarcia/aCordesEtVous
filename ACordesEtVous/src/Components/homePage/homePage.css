@@ -1,0 +1,91 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  height: 100%;
+}
+
+.upSection {
+  background-image: url("./fete.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 40%;
+  width: 100%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 8rem;
+}
+
+.slogan {
+  padding-top: 1rem;
+  font-size: larger;
+  text-shadow: 2px 2px 2px black;
+  order: 2;
+}
+
+.downSection {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5decc;
+  padding: 1.5rem;
+  color: #1f2421;
+  gap: 1rem;
+}
+
+.cardImage {
+  width: 20rem;
+  height: 20rem;
+}
+
+.onlyMobile{
+  display: none;
+}
+.onlyDesktop {
+  display: flex;
+}
+
+.info{
+  text-shadow: 2px 2px 2px black;
+  order: 1;
+}
+
+@media (max-width: 768px) {
+  .onlyDesktop {
+    display: none;
+  }
+  .onlyMobile{
+    display: block;
+  }
+
+  .upSection{
+    
+    width: 100%;
+    height: 100%;
+   
+    background-image: url("./salle.jpg");
+   
+  }
+  
+  .sloganContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+ .upSection{
+  flex-direction: column;
+  justify-content: center;
+  gap: 7rem;
+ }
+}

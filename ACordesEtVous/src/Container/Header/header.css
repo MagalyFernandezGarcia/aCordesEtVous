@@ -5,6 +5,7 @@
 	padding: 0.25rem;
 	background-color: #96c326;
 	color: white;
+	padding-right: 3rem;
 }
 
 .logo {
@@ -21,10 +22,7 @@
 	padding-left: 1rem;
 	padding-right: 1rem;
 }
-/* .currentPage {
-	font-weight: bold;
-	font-size: large;
-} */
+
 
 .mobile {
 	display: none;
@@ -38,7 +36,10 @@
 		display: none;
 	}
 	.mobile {
-		display: block;
+		display: block ;
+		
+		
+		
 	}
 
 	.currentPage {
@@ -47,7 +48,6 @@
 		color: #1f2421;
 	}
 
-	.linkContainer {
-		gap: 2rem;
-	}
+	
+	
 }
