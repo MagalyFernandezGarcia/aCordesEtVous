@@ -23,7 +23,9 @@ const HomePage = () => {
 		fetchData();
 	}, []);
 
-    const cardList = cards.map((card) => {
+  const sortedCards = [...cards].sort((a, b) => a.id - b.id);
+
+    const cardList = sortedCards.map((card) => {
         return (
             <div key={card.id} className="card">
                 <h2>{card.titre}</h2>
@@ -31,6 +33,8 @@ const HomePage = () => {
             </div>
         )
     })
+
+    
 
   return (
     <>

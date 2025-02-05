@@ -1,14 +1,16 @@
+import { Link } from "react-router-dom";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./header.css";
 const Header = () => {
 	return (
 		<header className="headerContainer">
 			<section className="linkContainer">
-				<img className="logo" src="logo.jpg" alt="logo" />
+			<Link to="/"><img className="logo" src="logo.jpg" alt="logo" /></Link>
+				
 				<h1 className="currentPage">A Cordes et Vous</h1>
 			</section>
 			<section className="linkContainer desktop ">
-				<p>Salle</p>
+				<Link to="/displays">Salle</Link>
 				<p>Guingette</p>
 				<p>Evénements</p>
 				<p>Matériel</p>
