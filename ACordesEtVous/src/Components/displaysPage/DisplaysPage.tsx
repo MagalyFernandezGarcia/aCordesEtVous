@@ -4,10 +4,13 @@ import { Amenagement } from "../../Types/amenagements";
 import "./displaysPage.css";
 import { Tarifs } from "../../Types/tarifs";
 import { fetchTarifsList } from "../../Services/tarifServices";
+import { Package } from "../../Types/package";
+import { fetchPackageList } from "../../Services/packageServices";
 
 const DisplaysPage = () => {
   const [displays, setDisplays] = useState<Amenagement[]>([]);
   const [tarifs, setTarifs] = useState<Tarifs[]>([]);
+  const [packages, setPackages] = useState<Package[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,9 +18,11 @@ const DisplaysPage = () => {
 
       const resultDispalys = await fetchDisplayList();
       const resultTarifs = await fetchTarifsList();
+      const resultPackages = await fetchPackageList();
       if (!ignore) {
         setDisplays(resultDispalys);
         setTarifs(resultTarifs);
+        setPackages(resultPackages);
       }
 
       return () => {
@@ -52,10 +57,21 @@ const DisplaysPage = () => {
     return (
       <div key={tarif.id} className="tarifContainer">
         <p>{tarif.title.rendered}</p>
-        <p>{tarif.prix} €</p>
+        <p className="price">{tarif.prix} €</p>
       </div>
     );
-  })
+  });
+
+  const packagesList = packages.map((forfait) => {
+    return (
+      <div key={forfait.id} className="tarifContainer">
+        <p>
+          {forfait.composition} ({forfait.duree})
+        </p>
+        <p className="price">{forfait.prix} €</p>
+      </div>
+    );
+  });
 
   return (
     <main className="displaysPage">
@@ -63,8 +79,11 @@ const DisplaysPage = () => {
       <section className="content">
         <section className="leftSide">{amenagements}</section>
         <section className="rightSide">
-            <h2 className="titleTarifs">Tarifs</h2>
-            {tarifsList}</section>
+          <h2 className="titleTarifs">Tarifs</h2>
+          <div>{tarifsList}</div>
+          <h2 className="titleTarifs">Forfaits</h2>
+          <div>{packagesList}</div>
+        </section>
       </section>
     </main>
   );
