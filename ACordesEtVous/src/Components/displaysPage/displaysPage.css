@@ -44,3 +44,25 @@
     padding-top: 1rem;
 
 }
+
+.tarifContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    
+
+}
+
+.rightSide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    
+    gap: 1rem;
+    
+}
+
+.titleTarifs{
+    text-align: center;
+}
