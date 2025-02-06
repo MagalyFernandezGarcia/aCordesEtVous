@@ -6,11 +6,14 @@ import { Tarifs } from "../../Types/tarifs";
 import { fetchTarifsList } from "../../Services/tarifServices";
 import { Package } from "../../Types/package";
 import { fetchPackageList } from "../../Services/packageServices";
+import DisplayPageModal from "./modal/DisplayPageModal";
 
 const DisplaysPage = () => {
   const [displays, setDisplays] = useState<Amenagement[]>([]);
   const [tarifs, setTarifs] = useState<Tarifs[]>([]);
   const [packages, setPackages] = useState<Package[]>([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [galleryId, setGalleryId] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +24,7 @@ const DisplaysPage = () => {
       const resultPackages = await fetchPackageList();
       if (!ignore) {
         setDisplays(resultDispalys);
+
         setTarifs(resultTarifs);
         setPackages(resultPackages);
       }
@@ -73,13 +77,44 @@ const DisplaysPage = () => {
     );
   });
 
+  const showGallery = (id: number) => {
+    setGalleryId(id);
+    setOpenModal(true);
+  };
+
   return (
     <main className="displaysPage">
-      <h1 className="titleDisplays"> Salle</h1>
+      <h1 className="titleDisplays desktopOnly"> Salle</h1>
+      <p className="text mobileOnly">La salle qui s'adapte à vos envies</p>
       <section className="content">
-        <section className="leftSide">{amenagements}</section>
-        <section className="rightSide">
-          <h2 className="titleTarifs">Tarifs</h2>
+        <section className="leftSide">
+          <div className="desktopOnly">{amenagements}</div>
+          <div className=" container mobileOnly">
+            {displays.map((display, id) => {
+              return (
+                <div className="galleryContainer" key={display.id}>
+                  <button className="photoBtn" onClick={() => showGallery(id)}>
+                    <img
+                      className="photo"
+                      src={display.photos[0].guid}
+                      alt="exemple de disposition"
+                    />
+                  </button>
+                  <p className="displayName">{display.nom_de_lambiance}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {openModal && (
+            <DisplayPageModal
+              gallery={displays[galleryId]}
+              onOpenModal={setOpenModal}
+            />
+          )}
+        </section>
+        <section className="rightSide desktopOnly">
+          <h2 className="titleTarifs ">Tarifs</h2>
           <div>{tarifsList}</div>
           <h2 className="titleTarifs">Forfaits</h2>
           <div>{packagesList}</div>

@@ -1,81 +1,118 @@
-.galleryContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    
-
+.galleryContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.leftSide{
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
+.leftSide {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 /* .gallery{
     overflow-x: scroll ;
 } */
 
-.photo{
-    width: 20rem;
+.photo {
+  width: 20rem;
 }
 
-.content{
-    display: flex;
-    justify-content: space-around;
-    padding-top: 5rem;
-    
-    
+.content {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5rem;
 }
 
-/* .displaysPage{
+.titleDisplays {
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 1rem;
+}
+
+.tarifContainer {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+
+  gap: 1rem;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f5edcc;
+  height: fit-content;
+  padding: 2rem;
+  margin-top: 8rem;
+
+  gap: 1rem;
+}
+
+.titleTarifs {
+  text-align: center;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.price {
+  justify-self: end;
+}
+
+.desktopOnly {
+  display: block;
+}
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+
+  .galleryContainer {
+    position: relative;
+  }
+
+  .photo {
+    width: 24rem;
+    height: 15rem;
+  }
+
+  .displayName {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    color: whitesmoke;
+    text-shadow: 2px 2px 2px black;
+  }
+
+  .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-} */
-
-.titleDisplays{
-    text-align: center;
-    font-size: 2rem;
-    padding-top: 1rem;
-
-}
-
-.tarifContainer{
-    display: grid;
-    grid-template-columns: 1fr 0.5fr;
-    
     gap: 1rem;
-    
+  }
 
-}
+  .photoBtn{
+    border: none;
+    background-color: transparent;
+  }
 
-.rightSide{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #F5EDCC;
-   height: fit-content;
-    padding: 2rem;
-    margin-top: 8rem;
-    
-    gap: 1rem;
-    
-}
-
-.titleTarifs{
+  .text{
     text-align: center;
-    padding-bottom: 1rem;
+    font-size: large;
+    font-weight: bold;
     padding-top: 1rem;
-}
+  }
 
-
-
-.price{
-   
-    justify-self: end
+  .content{
+    padding-top: 2rem;
+  }
 }
