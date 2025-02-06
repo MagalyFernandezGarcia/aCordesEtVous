@@ -40,7 +40,7 @@ Design des pages
 
 Call Api WP pour récupérer les pods et les afficher sur les pages
   -Service Events
-  -Service Aménagements
+  -Service Aménagements 
   -Service Tarifs
   -Service Matériel à louer
   -Service liste des services 👌
@@ -59,7 +59,7 @@ C'est tout ce que la personne a demandé à avoir sur son site. Cependant...
 
 ### Uniquement en vue admin:
 ```bash
-
+  -Des formulaires accessibles pour modifier les pods sans passer par WP
   -Un agenda des réservations
   -Gestion des stocks (matériel, nourriture et boissons)
   -Une fiche de facturation qui récapitule le nombre de matériel/boissons/nourriture en fonction du nombre de personnes (liés à la gestion des stocks)
