@@ -30,6 +30,12 @@
 .desktop {
 	display: flex;
 }
+.currentPage {
+	font-weight: bold;
+	font-size: 1.75rem;
+	text-align: center;
+	
+}
 
 @media (max-width: 768px) {
 	.desktop {
@@ -43,8 +49,7 @@
 	}
 
 	.currentPage {
-		font-weight: bold;
-		font-size: large;
+		
 		color: #1f2421;
 	}
 

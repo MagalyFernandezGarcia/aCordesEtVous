@@ -22,6 +22,7 @@
 .slogan {
   padding-top: 1rem;
   font-size: 1.5rem;
+  color: whitesmoke;
   
   text-shadow: 2px 2px 2px black;
   order: 2;
@@ -72,6 +73,10 @@
   transform: scale(1.1);
 }
 
+.cardTitle{
+  color:#1f2421
+}
+
 @media (max-width: 768px) {
   .onlyDesktop {
     display: none;
@@ -94,15 +99,26 @@
     flex-direction: column;
     align-items: center;
     
+    
   }
 
  .upSection{
   flex-direction: column;
+  padding-top: 7rem;
  
   gap: 7rem;
  }
  .info{
   position: relative;
+  order: 0
   
  }
+
+ .moreBtn{
+  background-color: #96c326;
+  border: none;
+  padding: 1rem;
+  border-radius: 10%;
+ }
+
 }

@@ -4,30 +4,20 @@ import HomePage from "./Components/homePage/HomePage";
 import Footer from "./Container/Footer/Footer";
 import Header from "./Container/Header/Header";
 import DisplaysPage from "./Components/displaysPage/DisplaysPage";
+import { useState } from "react";
 
-// function App() {
-//   return (
-//     <>
 
-//     <Header/>
-//     <Routes>
-//       <Route path="/" element={<HomePage />} />
-//       <Route path="/displays" element={<DisplaysPage />} />
-//     </Routes>
-//     <Footer />
-//     </>
-//   );
-// }
 function App() {
+  const [currentPage,setCurrentPage] =useState("")
   return (
     <section className="app">
       <section className="header">
-        <Header />
+        <Header currentPage={currentPage} />
       </section>
       <section className="main">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/displays" element={<DisplaysPage />} />
+          <Route path="/" element={<HomePage  onSetCurrentPage={setCurrentPage}/>} />
+          <Route path="/nosidees" element={<DisplaysPage onSetCurrentPage={setCurrentPage} />} />
         </Routes>
       </section>
       <section className="footer">

@@ -8,7 +8,7 @@ import { Package } from "../../Types/package";
 import { fetchPackageList } from "../../Services/packageServices";
 import DisplayPageModal from "./modal/DisplayPageModal";
 
-const DisplaysPage = () => {
+const DisplaysPage = ({onSetCurrentPage} :{onSetCurrentPage :React.Dispatch<React.SetStateAction<string>>}) => {
   const [displays, setDisplays] = useState<Amenagement[]>([]);
   const [tarifs, setTarifs] = useState<Tarifs[]>([]);
   const [packages, setPackages] = useState<Package[]>([]);
@@ -16,6 +16,7 @@ const DisplaysPage = () => {
   const [galleryId, setGalleryId] = useState(0);
 
   useEffect(() => {
+    onSetCurrentPage("Quelques idées")
     const fetchData = async () => {
       let ignore = false;
 

@@ -2,61 +2,77 @@ import { useEffect, useState } from "react";
 import { fetchCardList } from "../../Services/cardsServices";
 import { Card } from "../../Types/cards";
 import "./homePage.css";
+import { Link } from "react-router-dom";
 
-const HomePage = () => {
-    const [cards, setCards] = useState<Card[]>([]);
+const HomePage = ({
+  onSetCurrentPage,
+}: {
+  onSetCurrentPage: React.Dispatch<React.SetStateAction<string>>;
+}) => {
+  const [cards, setCards] = useState<Card[]>([]);
 
-    useEffect(() => {
-		const fetchData = async () => {
-			let ignore = false;
+  useEffect(() => {
+    onSetCurrentPage("Accueil");
+    const fetchData = async () => {
+      let ignore = false;
 
-			const result = await fetchCardList();
-			if (!ignore) {
-				setCards(result);
-			}
+      const result = await fetchCardList();
+      if (!ignore) {
+        setCards(result);
+      }
 
-			return () => {
-				ignore = true;
-			};
-		};
+      return () => {
+        ignore = true;
+      };
+    };
 
-		fetchData();
-	}, []);
+    fetchData();
+  }, []);
+
+  const normalizeString = (str: string) =>
+    str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "")
+      .toLowerCase();
 
   const sortedCards = [...cards].sort((a, b) => a.id - b.id);
 
-    const cardList = sortedCards.map((card) => {
-        return (
-            <div key={card.id} className="card">
-                <h2>{card.titre}</h2>
-                <img className="cardImage" src={card.image_de_la_carte.guid} alt="illustration du service" />
-            </div>
-        )
-    })
-
-    
+  const cardList = sortedCards.map((card) => {
+    return (
+      <div key={card.id} className="card">
+        <Link to={`/${normalizeString(card.title.rendered)}`}>
+          <h2 className="cardTitle">{card.titre}</h2>
+        </Link>
+        <img
+          className="cardImage"
+          src={card.image_de_la_carte.guid}
+          alt="illustration du service"
+        />
+      </div>
+    );
+  });
 
   return (
     <>
-    <main className="homePage " >
-      <section className="upSection">
-        <h1 className="slogan onlyDesktop">Une salle, plusieurs ambiances </h1>
-        <div className="sloganContainer onlyMobile" >
+      <main className="homePage ">
+        <section className="upSection">
+          <h1 className="slogan onlyDesktop">
+            Une salle, plusieurs ambiances{" "}
+          </h1>
+          <div className="sloganContainer onlyMobile">
             <h1 className="slogan">Une salle,</h1>
             <h1 className="slogan">plusieurs ambiances</h1>
-        </div>
-        <ul className="info">
+          </div>
+          <ul className="info">
             <li>Capacité : 100 personnes</li>
             <li>A louer avec ou sans service au bar</li>
-        </ul>
-      </section>
-      <section className="downSection onlyDesktop">
-        {cardList}
+          </ul>
+          <button className="onlyMobile moreBtn">Plus d'infos</button>
         </section>
-    </main>
-    
+        <section className="downSection onlyDesktop">{cardList}</section>
+      </main>
     </>
-    
   );
 };
 
