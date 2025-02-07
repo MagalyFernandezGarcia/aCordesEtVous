@@ -1,0 +1,28 @@
+.photoService{
+    width: 20rem;
+    height: 12rem;
+    
+}
+
+.titleService{
+    position: absolute;
+    left: 30%;
+   top: 40%;
+    color: whitesmoke;
+    text-shadow: 2px 2px 2px black;
+    
+    
+}
+
+.serviceContainer{
+    position: relative;
+}
+
+.servicesPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 3rem;
+   
+}

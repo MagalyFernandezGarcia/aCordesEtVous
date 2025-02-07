@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage  onSetCurrentPage={setCurrentPage}/>} />
           <Route path="/nosidees" element={<DisplaysPage onSetCurrentPage={setCurrentPage} />} />
-          <Route path="/services" element={<ServicesPage />} /> 
+          <Route path="/services" element={<ServicesPage onSetCurrentPage={setCurrentPage} />} /> 
         </Routes>
       </section>
       <section className="footer">
