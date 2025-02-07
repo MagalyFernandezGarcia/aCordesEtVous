@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { fetchDisplayList } from "../../Services/amenagementService";
+
 import { Amenagement } from "../../Types/amenagements";
 import "./displaysPage.css";
 import { Tarifs } from "../../Types/tarifs";
-import { fetchTarifsList } from "../../Services/tarifServices";
+
 import { Package } from "../../Types/package";
-import { fetchPackageList } from "../../Services/packageServices";
+
 import DisplayPageModal from "./modal/DisplayPageModal";
+import { fetchDisplayList, fetchPackageList, fetchTarifsList } from "../../Services/getServices";
 
 const DisplaysPage = ({onSetCurrentPage} :{onSetCurrentPage :React.Dispatch<React.SetStateAction<string>>}) => {
   const [displays, setDisplays] = useState<Amenagement[]>([]);

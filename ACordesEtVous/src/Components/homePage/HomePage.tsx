@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { fetchCardList } from "../../Services/cardsServices";
+
 import { Card } from "../../Types/cards";
 import "./homePage.css";
-import { Link, Links } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { fetchCardList } from "../../Services/getServices";
 
 const HomePage = ({
   onSetCurrentPage,
@@ -68,7 +69,9 @@ const HomePage = ({
             <li>Capacité : 100 personnes</li>
             <li>A louer avec ou sans service au bar</li>
           </ul>
-          <button className="onlyMobile moreBtn"><Link to="/services">Plus d'infos</Link></button>
+          <button className="onlyMobile moreBtn">
+            <Link to="/services">Plus d'infos</Link>
+          </button>
         </section>
         <section className="downSection onlyDesktop">{cardList}</section>
       </main>
