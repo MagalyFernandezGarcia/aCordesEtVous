@@ -51,3 +51,47 @@
     align-items: center;
     gap: 2rem;
 }
+.desktopOnly{
+    display: flex;
+}
+
+.mobileOnly{
+    display: none
+}
+
+@media(max-width: 768px){
+    .desktopOnly{
+        display: none;
+    }
+
+    .mobileOnly{
+        display: block
+    }
+    .guinguette{
+        padding-top: 1rem;
+        gap: 1rem;
+    }
+    .titleSchedule{
+        font-size: 1.5rem
+    }
+    .subTitle{
+        font-size: medium;
+    }
+    .section{
+        align-items: start;
+    }
+    .scheduleContainer{
+        padding-left: 4rem;
+    }
+
+    .textSchedule{
+        padding-left: 4rem;
+    }
+     
+
+    .barImg{
+        width: 25rem;
+        height: 27rem;
+    }
+
+}

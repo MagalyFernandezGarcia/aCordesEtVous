@@ -36,6 +36,8 @@ const Guinguette = ({
   }, []);
 
   const displaySchedule = schedules.map((schedule) => {
+
+    
     if (schedule.precision !== "A partir de") {
       return (
         <h3 key={schedule.id} className="subTitle">
@@ -83,10 +85,11 @@ const Guinguette = ({
       <div className="schedule">{displaySchedule}</div>
       <p className="textSchedule">Privatisation sur demande</p>
       </section>
-      <section className="section">
-      <h2>Forfaits</h2>
-      <div className="schedule">{displayPackage}</div>
+      <section className="section desktopOnly">
+      <h2 >Forfaits</h2>
+      <div className="schedule ">{displayPackage}</div>
       </section>
+      <img src="/bar.jpg" alt="bar" className="barImg" />
     </main>
   );
 };
