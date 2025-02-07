@@ -39,7 +39,10 @@ const DisplaysPage = ({onSetCurrentPage} :{onSetCurrentPage :React.Dispatch<Reac
     fetchData();
   }, []);
 
+  const sortedPackage = packages.filter(packages => packages.composition.includes("bar"))
+
   const amenagements = displays.map((display) => {
+    if(display)
     return (
       <div key={display.id} className="galleryContainer">
         <h2>{display.nom_de_lambiance}</h2>
@@ -68,7 +71,7 @@ const DisplaysPage = ({onSetCurrentPage} :{onSetCurrentPage :React.Dispatch<Reac
     );
   });
 
-  const packagesList = packages.map((forfait) => {
+  const packagesList = sortedPackage.map((forfait) => {
     return (
       <div key={forfait.id} className="tarifContainer">
         <p>
