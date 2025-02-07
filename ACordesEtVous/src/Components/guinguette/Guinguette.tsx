@@ -47,17 +47,19 @@ const Guinguette = ({
     } else if (schedule.jours === "Dimanche") {
       return (
         <div key={schedule.id} className=" scheduleContainer dimanche">
-          <p className="days">{schedule.jours}</p>
-          <p>
-            {schedule.precision} {schedule.heure.slice(0, -3)}
+          <p className="days">•     {schedule.jours}</p>
+          <p className="precision">  
+                {schedule.precision} {schedule.heure.slice(0, -3)}
           </p>
         </div>
+        
       );
     } else {
       return (
         <div key={schedule.id} className="scheduleContainer">
-          <p className="days">{schedule.jours}</p>
-          <p>
+            
+          <p className="days">•       {schedule.jours}</p>
+          <p className="precision">
             {schedule.precision} {schedule.heure.slice(0, -3)}
           </p>
         </div>

@@ -58,6 +58,9 @@
 .mobileOnly{
     display: none
 }
+.precision{
+    padding-left: 0.75rem;
+}
 
 @media(max-width: 768px){
     .desktopOnly{
@@ -87,6 +90,7 @@
     .textSchedule{
         padding-left: 4rem;
     }
+    
      
 
     .barImg{
