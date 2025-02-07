@@ -30,7 +30,7 @@ Page de contact
 ```bash
 Design des pages
   -Accueil 👌
-  -Salle
+  -Salle 👌
   -Café/Bar
   -Evenement
   -Matériel
@@ -40,8 +40,8 @@ Design des pages
 
 Call Api WP pour récupérer les pods et les afficher sur les pages
   -Service Events
-  -Service Aménagements 
-  -Service Tarifs
+  -Service Aménagements  👌
+  -Service Tarifs 👌
   -Service Matériel à louer
   -Service liste des services 👌
 
