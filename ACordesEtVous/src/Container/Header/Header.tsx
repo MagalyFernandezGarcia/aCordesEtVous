@@ -11,7 +11,7 @@ const Header = ({currentPage} : {currentPage :string}) => {
 				<h1 className="currentPage mobile">{currentPage}</h1>
 			</section>
 			<section className="linkContainer desktop ">
-				<Link to="/displays">Salle</Link>
+				<Link to="/nosidees">Salle</Link>
 				<p>Guingette</p>
 				<p>Evénements</p>
 				<p>Matériel</p>

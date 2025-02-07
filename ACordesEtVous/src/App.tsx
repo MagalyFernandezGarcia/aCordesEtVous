@@ -5,6 +5,7 @@ import Footer from "./Container/Footer/Footer";
 import Header from "./Container/Header/Header";
 import DisplaysPage from "./Components/displaysPage/DisplaysPage";
 import { useState } from "react";
+import ServicesPage from "./Components/servicePage/ServicesPage";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage  onSetCurrentPage={setCurrentPage}/>} />
           <Route path="/nosidees" element={<DisplaysPage onSetCurrentPage={setCurrentPage} />} />
+          <Route path="/services" element={<ServicesPage />} /> 
         </Routes>
       </section>
       <section className="footer">
