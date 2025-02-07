@@ -12,7 +12,7 @@ const Header = ({currentPage} : {currentPage :string}) => {
 			</section>
 			<section className="linkContainer desktop ">
 				<Link to="/nosidees">Salle</Link>
-				<p>Guingette</p>
+				<Link to="/guinguette">Guingette</Link>
 				<p>Evénements</p>
 				<p>Matériel</p>
 				<p>Contact</p>
