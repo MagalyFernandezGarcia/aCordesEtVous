@@ -37,7 +37,7 @@ const BurgerMenu = () => {
 					</a>
 				</li>
 				<li>
-					<a href="/about" className="menu-item" onClick={closeMenu}>
+					<a href="/evenements" className="menu-item" onClick={closeMenu}>
 						Evénements
 					</a>
 				</li>

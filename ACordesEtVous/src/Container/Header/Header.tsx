@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./header.css";
 const Header = ({currentPage} : {currentPage :string}) => {
@@ -13,7 +13,7 @@ const Header = ({currentPage} : {currentPage :string}) => {
 			<section className="linkContainer desktop ">
 				<Link to="/nosidees">Salle</Link>
 				<Link to="/guinguette">Guingette</Link>
-				<p>Evénements</p>
+				<Link to="/evenements">Evénements</Link>
 				<p>Matériel</p>
 				<p>Contact</p>
 			</section>

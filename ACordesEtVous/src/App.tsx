@@ -7,6 +7,7 @@ import DisplaysPage from "./Components/displaysPage/DisplaysPage";
 import { useState } from "react";
 import ServicesPage from "./Components/servicePage/ServicesPage";
 import Guinguette from "./Components/guinguette/Guinguette";
+import Events from "./Components/events/Events";
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
           <Route path="/nosidees" element={<DisplaysPage onSetCurrentPage={setCurrentPage} />} />
           <Route path="/services" element={<ServicesPage onSetCurrentPage={setCurrentPage} />} /> 
           <Route path="/guinguette" element={<Guinguette onSetCurrentPage={setCurrentPage} />} />
+          <Route path="/evenements" element={<Events />} />
+          
         </Routes>
       </section>
       <section className="footer">
