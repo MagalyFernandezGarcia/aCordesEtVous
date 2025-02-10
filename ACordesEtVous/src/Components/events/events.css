@@ -1,0 +1,77 @@
+.cardEvent{
+    display: flex;
+    flex-direction: column;
+    background-color: #f5decc;
+    height: fit-content;
+    
+}
+
+.banniere {
+   
+  width: 26rem;
+  height: 20rem;
+}
+
+.titleEvent {
+  
+  text-align: center;
+  font-size: 1.5rem;
+  
+  text-shadow: 2px 2px 2px black;
+}
+
+.infoEvent{
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+.descriptionEvent{
+    padding: 0.5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 25rem;
+}
+
+.eventsContainer{
+    display: flex;
+    justify-content: center;
+    
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+
+.eventsPage{
+    display: flex;
+    flex-direction: column;
+    
+    gap: 1rem;
+    padding-top: 3rem;
+}
+
+.listChoices{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-bottom: 2rem;
+}
+
+.btnEvent{
+    background-color: #F8FCEE;
+    border: none;
+    color: #1F2421;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.btnImg{
+    background-color: transparent;
+    border: none;
+    
+    cursor: pointer;
+
+}
+
+.nonActiveBtn{
+    color: gray;
+}

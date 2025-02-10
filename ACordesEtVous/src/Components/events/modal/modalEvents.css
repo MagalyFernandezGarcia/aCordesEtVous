@@ -1,0 +1,43 @@
+.modalEvent {
+    position: fixed;
+    z-index: 1;
+    
+    top: 5.5rem;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+  }
+  
+  .modalEventContent {
+    
+    
+    width: 40rem;
+    
+  }
+  
+  
+  .closeEvent {
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    color: #968f8f;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .closeEvent:hover,
+  .closeEvent:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  

@@ -9,9 +9,8 @@ import ServicesPage from "./Components/servicePage/ServicesPage";
 import Guinguette from "./Components/guinguette/Guinguette";
 import Events from "./Components/events/Events";
 
-
 function App() {
-  const [currentPage,setCurrentPage] =useState("")
+  const [currentPage, setCurrentPage] = useState("");
   return (
     <section className="app">
       <section className="header">
@@ -19,12 +18,26 @@ function App() {
       </section>
       <section className="main">
         <Routes>
-          <Route path="/" element={<HomePage  onSetCurrentPage={setCurrentPage}/>} />
-          <Route path="/nosidees" element={<DisplaysPage onSetCurrentPage={setCurrentPage} />} />
-          <Route path="/services" element={<ServicesPage onSetCurrentPage={setCurrentPage} />} /> 
-          <Route path="/guinguette" element={<Guinguette onSetCurrentPage={setCurrentPage} />} />
-          <Route path="/evenements" element={<Events />} />
-          
+          <Route
+            path="/"
+            element={<HomePage onSetCurrentPage={setCurrentPage} />}
+          />
+          <Route
+            path="/nosidees"
+            element={<DisplaysPage onSetCurrentPage={setCurrentPage} />}
+          />
+          <Route
+            path="/services"
+            element={<ServicesPage onSetCurrentPage={setCurrentPage} />}
+          />
+          <Route
+            path="/guinguette"
+            element={<Guinguette onSetCurrentPage={setCurrentPage} />}
+          />
+          <Route
+            path="/evenements"
+            element={<Events onSetCurrentPage={setCurrentPage} />}
+          />
         </Routes>
       </section>
       <section className="footer">
