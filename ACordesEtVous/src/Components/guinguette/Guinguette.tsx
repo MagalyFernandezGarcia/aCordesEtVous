@@ -91,7 +91,7 @@ const Guinguette = ({
       <h2 >Forfaits</h2>
       <div className="schedule ">{displayPackage}</div>
       </section>
-      <img src="/bar.jpg" alt="bar" className="barImg" />
+      <img src="/bar.jpg" alt="bar" className="barImg mobileOnly" />
     </main>
   );
 };

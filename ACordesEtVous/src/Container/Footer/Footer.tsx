@@ -4,9 +4,9 @@ const Footer = () => {
 	return (
 		<footer className="footerContainer mobileFooter">
 			<div className="footerLinks">
-				<p>Nos Réseaux</p>
+				
 				<div className="logoContainer">
-					<img className="socialLogo" src="facebook.svg" alt="facebook logo" />
+					<a href="https://www.facebook.com/profile.php?id=61560461489968" target="_blank"><img className="socialLogo" src="facebook.svg" alt="facebook logo" /></a>
 					<img className="socialLogo" src="insta.svg" alt="instagram logo" />
 				</div>
 			</div>

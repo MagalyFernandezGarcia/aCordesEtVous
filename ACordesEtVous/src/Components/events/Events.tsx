@@ -26,21 +26,25 @@ const Events = ({
       const todayMonth = new Date().getMonth();
       const todayYear = new Date().getFullYear();
 
-      const passedEvents = sortedResult.filter((event) => {
-        const eventMonth = new Date(event.date_de_l_evenement).getMonth();
-        const eventYear = new Date(event.date_de_l_evenement).getFullYear();
-       
-
-        return (
-          todayYear || (eventYear === todayYear && eventMonth < todayMonth)
-        );
-      });
-
-      const actualEvents = sortedResult.filter((event) => {
-        const eventMonth = new Date(event.date_de_l_evenement).getMonth();
-        const eventYear = new Date(event.date_de_l_evenement).getFullYear();
-        return eventMonth >= todayMonth && eventYear >= todayYear;
-      });
+      const { passedEvents, actualEvents } = sortedResult.reduce<{
+        passedEvents : Evenement[];
+        actualEvents : Evenement[]
+      }>(
+        (acc, event) => {
+          const eventMonth = new Date(event.date_de_l_evenement).getMonth();
+          const eventYear = new Date(event.date_de_l_evenement).getFullYear();
+      
+          
+          if (eventYear < todayYear || (eventYear === todayYear && eventMonth < todayMonth)) {
+            acc.passedEvents.push(event);
+          } else {
+            acc.actualEvents.push(event);
+          }
+      
+          return acc;
+        },
+        { passedEvents: [], actualEvents: [] } 
+      );
 
       if (!ignore) {
         setPassedEvent(passedEvents);
