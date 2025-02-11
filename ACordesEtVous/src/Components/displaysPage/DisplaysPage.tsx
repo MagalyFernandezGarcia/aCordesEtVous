@@ -7,9 +7,17 @@ import { Tarifs } from "../../Types/tarifs";
 import { Package } from "../../Types/package";
 
 import DisplayPageModal from "./modal/DisplayPageModal";
-import { fetchDisplayList, fetchPackageList, fetchTarifsList } from "../../Services/getServices";
+import {
+  fetchDisplayList,
+  fetchPackageList,
+  fetchTarifsList,
+} from "../../Services/getServices";
 
-const DisplaysPage = ({onSetCurrentPage} :{onSetCurrentPage :React.Dispatch<React.SetStateAction<string>>}) => {
+const DisplaysPage = ({
+  onSetCurrentPage,
+}: {
+  onSetCurrentPage: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const [displays, setDisplays] = useState<Amenagement[]>([]);
   const [tarifs, setTarifs] = useState<Tarifs[]>([]);
   const [packages, setPackages] = useState<Package[]>([]);
@@ -17,7 +25,7 @@ const DisplaysPage = ({onSetCurrentPage} :{onSetCurrentPage :React.Dispatch<Reac
   const [galleryId, setGalleryId] = useState(0);
 
   useEffect(() => {
-    onSetCurrentPage("Quelques idées")
+    onSetCurrentPage("Quelques idées");
     const fetchData = async () => {
       let ignore = false;
 
@@ -39,27 +47,29 @@ const DisplaysPage = ({onSetCurrentPage} :{onSetCurrentPage :React.Dispatch<Reac
     fetchData();
   }, []);
 
-  const sortedPackage = packages.filter(packages => packages.composition.includes("bar"))
+  const sortedPackage = packages.filter((packages) =>
+    packages.composition.includes("bar")
+  );
 
   const amenagements = displays.map((display) => {
-    if(display)
-    return (
-      <div key={display.id} className="galleryContainer">
-        <h2>{display.nom_de_lambiance}</h2>
-        <div className="gallery">
-          {display.photos.map((photo) => {
-            return (
-              <img
-                key={photo.ID}
-                src={photo.guid}
-                alt="illustration du service"
-                className="photo"
-              />
-            );
-          })}
+    if (display)
+      return (
+        <div key={display.id} className="galleryContainer">
+          <h2>{display.nom_de_lambiance}</h2>
+          <div className="gallery">
+            {display.photos.map((photo) => {
+              return (
+                <img
+                  key={photo.ID}
+                  src={photo.guid}
+                  alt="illustration du service"
+                  className="photo"
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
-    );
+      );
   });
 
   const tarifsList = tarifs.map((tarif) => {
@@ -123,7 +133,17 @@ const DisplaysPage = ({onSetCurrentPage} :{onSetCurrentPage :React.Dispatch<Reac
           <div>{tarifsList}</div>
           <h2 className="titleTarifs">Forfaits</h2>
           <div>{packagesList}</div>
+          
         </section>
+      </section>
+      <section className="more">
+      <p>Vous n'avez pas trouvé une disposition selon votre idée ?</p>
+            <p>
+              Contactez-nous pour en discuter et modeler la salle selon vos
+              envies
+            </p>
+            <p className="contactDisplay">acordes.vous@gmail.com</p>
+            <p className="contactDisplay">0477/19.82.45</p>
       </section>
     </main>
   );
