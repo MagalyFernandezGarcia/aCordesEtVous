@@ -63,9 +63,11 @@ const Events = ({
 
   return (
     <main className="eventsPage">
+      <h1 className="eventsTitle desktopOnly">Evènements</h1>
       {openModal && (
         <ModalEvent imgEvent={imageEvent} onOpenModal={setOpenModal} />
       )}
+      
       <section className="listChoices">
         
         <button className={`btnEvent ${isPassedSelected && "nonActiveBtn"}`} onClick={() => handleArrayEvent()}>

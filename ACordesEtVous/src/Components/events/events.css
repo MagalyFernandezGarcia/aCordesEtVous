@@ -75,3 +75,57 @@
 .nonActiveBtn{
     color: gray;
 }
+
+.eventsTitle{
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: 2rem;
+}
+
+.desktopOnly{
+    display: block;
+}
+
+.mobileOnly{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktopOnly {
+      display: none;
+    }
+  
+    .mobileOnly {
+      display: block;
+    }
+
+    .listChoices{
+        padding-bottom: 0%;
+        background-color: #96c326;
+        border-radius: 30px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .btnEvent{
+        
+        background-color: #96c326;
+        border-radius: 30px;
+
+        
+    }
+
+    .eventsPage{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .banniere{
+        width: 23rem;
+    }
+    .cardEvent{
+        width: 23rem;
+    }
+  }
