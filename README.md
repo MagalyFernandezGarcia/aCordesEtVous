@@ -31,22 +31,22 @@ Page de contact
 Design des pages
   -Accueil 👌
   -Salle 👌
-  -Café/Bar
-  -Evenement
-  -Matériel
-  -Contact
+  -Café/Bar👌
+  -Evenement👌
+  -Matériel👌
+  -Contact👌
   -Login admin
 
 
 Call Api WP pour récupérer les pods et les afficher sur les pages
-  -Service Events
+  -Service Events👌
   -Service Aménagements  👌
   -Service Tarifs 👌
-  -Service Matériel à louer
+  -Service Matériel à louer👌
   -Service liste des services 👌
 
-Implémenter les services dans les pages correspondantes
-Mise en place du Routing
+Implémenter les services dans les pages correspondantes👌
+Mise en place du Routing👌
 ````
 
   
