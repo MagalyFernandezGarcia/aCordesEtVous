@@ -10,6 +10,7 @@ import Guinguette from "./Components/guinguette/Guinguette";
 import Events from "./Components/events/Events";
 import MaterialsLocation from "./Components/materialsLocation/MaterialsLocation";
 import Contact from "./Components/contact/Contact";
+import TarifsPage from "./Components/tarifsPage/TarifsPage";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("");
@@ -40,8 +41,18 @@ function App() {
             path="/evenements"
             element={<Events onSetCurrentPage={setCurrentPage} />}
           />
-          <Route path="materiel" element={<MaterialsLocation onSetCurrentPage={setCurrentPage} />}/>
-          <Route path="contact" element={<Contact onSetCurrentPage={setCurrentPage}/>}/>
+          <Route
+            path="/materiel"
+            element={<MaterialsLocation onSetCurrentPage={setCurrentPage} />}
+          />
+          <Route
+            path="/contact"
+            element={<Contact onSetCurrentPage={setCurrentPage} />}
+          />
+          <Route
+            path="/tarifs"
+            element={<TarifsPage onSetCurrentPage={setCurrentPage} />}
+          />
         </Routes>
       </section>
       <section className="footer">

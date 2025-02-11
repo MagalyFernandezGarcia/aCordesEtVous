@@ -47,7 +47,7 @@ const BurgerMenu = () => {
 					</a>
 				</li>
 				<li>
-					<a href="/about" className="menu-item" onClick={closeMenu}>
+					<a href="/tarifs" className="menu-item" onClick={closeMenu}>
 						Tarifs
 					</a>
 				</li>
