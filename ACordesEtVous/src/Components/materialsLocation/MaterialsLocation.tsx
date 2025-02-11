@@ -11,7 +11,7 @@ const MaterialsLocation = ({
   const [materials, setMaterials] = useState<Material[]>([]);
 
   useEffect(() => {
-    onSetCurrentPage("Accueil");
+    onSetCurrentPage("Materiel");
     const fetchData = async () => {
       let ignore = false;
 
@@ -49,7 +49,7 @@ const MaterialsLocation = ({
 
   return (
     <main>
-      <h1 className="locationTitle">Location de matériel</h1>
+      <h1 className="locationTitle desktopOnly">Location de matériel</h1>
       <section className="cardsContainer">{displayMaterials}</section>
     </main>
   );

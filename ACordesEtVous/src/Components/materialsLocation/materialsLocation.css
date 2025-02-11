@@ -41,3 +41,19 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+
+.desktopOnly{
+    display: block;
+}
+
+@media (max-width: 768px){
+    .desktopOnly{
+        display: none;
+    }
+
+    .cardsContainer{
+        overflow-y: none;
+        padding-top: 2rem;
+
+    }
+}
