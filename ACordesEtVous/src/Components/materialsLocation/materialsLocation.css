@@ -1,0 +1,43 @@
+
+.cardLocation{
+    background-color: #f5decc;
+    width: 22rem;
+    padding-left: 0.5rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+.locationImg{
+    height: 20rem;
+    padding-left: 0.75rem;
+    width: 20rem;
+    padding-top: 1rem;
+}
+
+.materialDescription{
+    color: gray;
+
+}
+
+.cardsContainer{
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    overflow-y: scroll;
+}
+
+.priceContainer{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.locationTitle{
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
