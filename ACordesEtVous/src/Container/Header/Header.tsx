@@ -15,7 +15,7 @@ const Header = ({currentPage} : {currentPage :string}) => {
 				<Link to="/guinguette">Guingette</Link>
 				<Link to="/evenements">Evénements</Link>
 				<Link to="/materiel">Matériel</Link>
-				<p>Contact</p>
+				<Link to="/contact">Contact</Link>
 			</section>
 			<section className="mobile">
 				<BurgerMenu />

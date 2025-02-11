@@ -1,0 +1,73 @@
+.logoContact{
+    width: 3rem;
+}
+
+.map{
+    width: 40rem;
+}
+
+.contactPage{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.contactTitle{
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.contactInfo{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.leftSection{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.desktopOnly{
+    display: block;
+}
+
+@media(max-width:768px){
+    .desktopOnly{
+        display: none;
+    }
+
+    .contactPage{
+        flex-direction: column;
+    }
+    .leftSection{
+        order: 2;
+    }
+
+    .map{
+        object-position: -60px;
+        margin-bottom: 2rem;
+    }
+    .address{
+        display: flex;
+    }
+    .contactInfo{
+        justify-content: center;
+    }
+    .socialMedia{
+        padding-top: 6rem;
+        order: 3;
+    }
+    .socialMediaLogo{
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .insta{
+        width: 7rem;
+    }
+}

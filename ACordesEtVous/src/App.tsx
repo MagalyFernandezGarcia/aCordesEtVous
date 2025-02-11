@@ -9,6 +9,7 @@ import ServicesPage from "./Components/servicePage/ServicesPage";
 import Guinguette from "./Components/guinguette/Guinguette";
 import Events from "./Components/events/Events";
 import MaterialsLocation from "./Components/materialsLocation/MaterialsLocation";
+import Contact from "./Components/contact/Contact";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("");
@@ -40,6 +41,7 @@ function App() {
             element={<Events onSetCurrentPage={setCurrentPage} />}
           />
           <Route path="materiel" element={<MaterialsLocation onSetCurrentPage={setCurrentPage} />}/>
+          <Route path="contact" element={<Contact onSetCurrentPage={setCurrentPage}/>}/>
         </Routes>
       </section>
       <section className="footer">
