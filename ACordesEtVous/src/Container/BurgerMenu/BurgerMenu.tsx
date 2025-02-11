@@ -42,7 +42,7 @@ const BurgerMenu = () => {
 					</a>
 				</li>
 				<li>
-					<a href="/about" className="menu-item" onClick={closeMenu}>
+					<a href="/materiel" className="menu-item" onClick={closeMenu}>
 						Matériel
 					</a>
 				</li>

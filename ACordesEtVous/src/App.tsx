@@ -8,6 +8,7 @@ import { useState } from "react";
 import ServicesPage from "./Components/servicePage/ServicesPage";
 import Guinguette from "./Components/guinguette/Guinguette";
 import Events from "./Components/events/Events";
+import MaterialsLocation from "./Components/materialsLocation/MaterialsLocation";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("");
@@ -38,6 +39,7 @@ function App() {
             path="/evenements"
             element={<Events onSetCurrentPage={setCurrentPage} />}
           />
+          <Route path="materiel" element={<MaterialsLocation onSetCurrentPage={setCurrentPage} />}/>
         </Routes>
       </section>
       <section className="footer">
