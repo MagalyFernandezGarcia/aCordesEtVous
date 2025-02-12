@@ -6,7 +6,7 @@ const Header = ({ currentPage }: { currentPage: string }) => {
 		<header className="headerContainer">
 			<section className="logoHomeContainer">
 				<Link to="/" className="linkContainer">
-					<img className="logo" src="logo.jpg" alt="logo" />
+					<img className="logo" src="/logo.jpg" alt="logo" />
 
 					<h1 className="currentPage desktop">A Cordes et Vous</h1>
 				</Link>
