@@ -1,5 +1,7 @@
 const UpdateForm = ({ auth }: { auth: string }) => {
-	return <div>{auth}</div>;
+	if (auth === "admin") {
+		return <div>UpdateForm</div>;
+	}
 };
 
 export default UpdateForm;

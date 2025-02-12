@@ -7,7 +7,7 @@ export async function LoginUser(
 	formData.append("pwd", password);
 
 	try {
-		const response = await fetch("http://quizz.local/wp-login.php", {
+		const response = await fetch("http://a-cordes-et-vous.local/wp-login.php", {
 			method: "POST",
 			headers: { "content-Type": "application/x-www-form-urlencoded" },
 			body: formData.toString(),

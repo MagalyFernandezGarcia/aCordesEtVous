@@ -30,7 +30,9 @@ function App() {
 					/>
 					<Route
 						path="/nosidees"
-						element={<DisplaysPage onSetCurrentPage={setCurrentPage} />}
+						element={
+							<DisplaysPage onSetCurrentPage={setCurrentPage} auth={auth} />
+						}
 					/>
 					<Route
 						path="/services"
