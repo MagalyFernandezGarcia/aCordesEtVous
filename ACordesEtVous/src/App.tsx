@@ -17,6 +17,7 @@ import UpdateForm from "./Container/upDateForm/UpdateForm";
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
 	const [auth, setAuth] = useState("");
+	const [podId, setPodId] = useState<number>();
 	return (
 		<section className="app">
 			<section className="header">
@@ -31,7 +32,11 @@ function App() {
 					<Route
 						path="/nosidees"
 						element={
-							<DisplaysPage onSetCurrentPage={setCurrentPage} auth={auth} />
+							<DisplaysPage
+								onSetCurrentPage={setCurrentPage}
+								auth={auth}
+								onsetPodId={setPodId}
+							/>
 						}
 					/>
 					<Route
@@ -59,7 +64,10 @@ function App() {
 						element={<TarifsPage onSetCurrentPage={setCurrentPage} />}
 					/>
 					<Route path="/login" element={<Login onSetAuth={setAuth} />} />
-					<Route path="upDate" element={<UpdateForm auth={auth} />} />
+					<Route
+						path="update"
+						element={<UpdateForm auth={auth} podId={podId} />}
+					/>
 				</Routes>
 			</section>
 			<section className="footer">

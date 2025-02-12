@@ -17,9 +17,11 @@ import { Link } from "react-router-dom";
 const DisplaysPage = ({
 	onSetCurrentPage,
 	auth,
+	onsetPodId,
 }: {
 	onSetCurrentPage: React.Dispatch<React.SetStateAction<string>>;
 	auth: string;
+	onsetPodId: React.Dispatch<React.SetStateAction<number | undefined>>;
 }) => {
 	const [displays, setDisplays] = useState<Amenagement[]>([]);
 	const [tarifs, setTarifs] = useState<Tarifs[]>([]);
@@ -53,7 +55,6 @@ const DisplaysPage = ({
 	const sortedPackage = packages.filter((packages) =>
 		packages.composition.includes("bar")
 	);
-	console.log("salle", auth);
 
 	const amenagements = displays.map((display) => {
 		if (display)
@@ -62,7 +63,7 @@ const DisplaysPage = ({
 					<div className="displayTitle">
 						<h2>{display.nom_de_lambiance}</h2>
 						{auth === "admin" && (
-							<Link to="/update">
+							<Link to="/update" onClick={() => onsetPodId(display.id)}>
 								<img src="/pen.svg" alt="update icon" className="updateIcon" />
 							</Link>
 						)}

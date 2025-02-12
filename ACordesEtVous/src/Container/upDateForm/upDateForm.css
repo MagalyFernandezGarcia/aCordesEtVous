@@ -1,0 +1,25 @@
+.formUpdate {
+	padding-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-items: center;
+	gap: 2rem;
+}
+
+.formTitle {
+	padding-bottom: 2rem;
+
+	font-size: 2rem;
+}
+
+.formSubmit {
+	background-color: #96c326;
+	color: white;
+	border: none;
+	padding: 1rem;
+	border-radius: 10px;
+}
+.formSubmit:hover {
+	cursor: pointer;
+}

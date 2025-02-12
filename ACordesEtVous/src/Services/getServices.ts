@@ -6,15 +6,19 @@ import { Material } from "../Types/materials";
 import { Package } from "../Types/package";
 import { Tarifs } from "../Types/tarifs";
 
+import {
+	fetchDatasFromWP,
+	fetchDatasFromWPById,
+} from "./servicesAPI/ServicesAPI";
 
-import { fetchDatasFromWP } from "./servicesAPI/ServicesAPI";
+export const fetchDisplayList = () =>
+	fetchDatasFromWP<Amenagement>("amenagements");
+export const fetchCardList = () => fetchDatasFromWP<Card>("cards");
+export const fetchPackageList = () => fetchDatasFromWP<Package>("forfaits");
+export const fetchTarifsList = () => fetchDatasFromWP<Tarifs>("tarifs");
+export const fetchScheduleList = () => fetchDatasFromWP<Horaire>("horaires");
+export const fetchEventsList = () => fetchDatasFromWP<Evenement>("evenements");
+export const fetchMaterialsList = () => fetchDatasFromWP<Material>("locations");
 
-
-
-export const fetchDisplayList = ()=> fetchDatasFromWP<Amenagement>("amenagements");
-export const fetchCardList = ()=> fetchDatasFromWP<Card>("cards");
-export const fetchPackageList = ()=> fetchDatasFromWP<Package>("forfaits");
-export const fetchTarifsList =()=> fetchDatasFromWP<Tarifs>("tarifs");
-export const fetchScheduleList =()=> fetchDatasFromWP<Horaire>("horaires");
-export const fetchEventsList =()=> fetchDatasFromWP<Evenement>("evenements");
-export const fetchMaterialsList =()=> fetchDatasFromWP<Material>("locations");
+export const fetchDisplayById = (id: number) =>
+	fetchDatasFromWPById<Amenagement>("amenagements", id);
