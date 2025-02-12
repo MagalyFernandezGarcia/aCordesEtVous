@@ -23,9 +23,9 @@ const BurgerMenu = () => {
 					</Link>
 				</li>
 				<li>
-					<a href="/services" className="menu-item" onClick={closeMenu}>
+					<Link to="/services" className="menu-item" onClick={closeMenu}>
 						Services
-					</a>
+					</Link>
 				</li>
 				<li>
 					<Link to="/nosidees" className="menu-item" onClick={closeMenu}>
