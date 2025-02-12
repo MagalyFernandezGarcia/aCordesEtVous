@@ -11,55 +11,58 @@ import Events from "./Components/events/Events";
 import MaterialsLocation from "./Components/materialsLocation/MaterialsLocation";
 import Contact from "./Components/contact/Contact";
 import TarifsPage from "./Components/tarifsPage/TarifsPage";
+import Login from "./Container/login/Login";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("");
-  return (
-    <section className="app">
-      <section className="header">
-        <Header currentPage={currentPage} />
-      </section>
-      <section className="main">
-        <Routes>
-          <Route
-            path="/"
-            element={<HomePage onSetCurrentPage={setCurrentPage} />}
-          />
-          <Route
-            path="/nosidees"
-            element={<DisplaysPage onSetCurrentPage={setCurrentPage} />}
-          />
-          <Route
-            path="/services"
-            element={<ServicesPage onSetCurrentPage={setCurrentPage} />}
-          />
-          <Route
-            path="/guinguette"
-            element={<Guinguette onSetCurrentPage={setCurrentPage} />}
-          />
-          <Route
-            path="/evenements"
-            element={<Events onSetCurrentPage={setCurrentPage} />}
-          />
-          <Route
-            path="/materiel"
-            element={<MaterialsLocation onSetCurrentPage={setCurrentPage} />}
-          />
-          <Route
-            path="/contact"
-            element={<Contact onSetCurrentPage={setCurrentPage} />}
-          />
-          <Route
-            path="/tarifs"
-            element={<TarifsPage onSetCurrentPage={setCurrentPage} />}
-          />
-        </Routes>
-      </section>
-      <section className="footer">
-        <Footer />
-      </section>
-    </section>
-  );
+	const [currentPage, setCurrentPage] = useState("");
+	const [auth, setAuth] = useState("");
+	return (
+		<section className="app">
+			<section className="header">
+				<Header currentPage={currentPage} />
+			</section>
+			<section className="main">
+				<Routes>
+					<Route
+						path="/"
+						element={<HomePage onSetCurrentPage={setCurrentPage} />}
+					/>
+					<Route
+						path="/nosidees"
+						element={<DisplaysPage onSetCurrentPage={setCurrentPage} />}
+					/>
+					<Route
+						path="/services"
+						element={<ServicesPage onSetCurrentPage={setCurrentPage} />}
+					/>
+					<Route
+						path="/guinguette"
+						element={<Guinguette onSetCurrentPage={setCurrentPage} />}
+					/>
+					<Route
+						path="/evenements"
+						element={<Events onSetCurrentPage={setCurrentPage} />}
+					/>
+					<Route
+						path="/materiel"
+						element={<MaterialsLocation onSetCurrentPage={setCurrentPage} />}
+					/>
+					<Route
+						path="/contact"
+						element={<Contact onSetCurrentPage={setCurrentPage} />}
+					/>
+					<Route
+						path="/tarifs"
+						element={<TarifsPage onSetCurrentPage={setCurrentPage} />}
+					/>
+					<Route path="/login" element={<Login onSetAuth={setAuth} />} />
+				</Routes>
+			</section>
+			<section className="footer">
+				<Footer />
+			</section>
+		</section>
+	);
 }
 
 export default App;

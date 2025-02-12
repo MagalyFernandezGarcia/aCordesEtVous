@@ -1,0 +1,38 @@
+.logCard {
+	display: flex;
+	flex-direction: column;
+
+	padding: 40px;
+
+	align-items: center;
+	padding-top: 8rem;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	align-items: center;
+}
+
+.loginBtn {
+	background-color: #96c326;
+	color: white;
+	border: none;
+	padding: 1rem;
+	border-radius: 30px;
+}
+
+.loginBtn:hover {
+	cursor: pointer;
+}
+
+@media (max-width: 768px) {
+	.logCard {
+		padding: 0;
+		padding-top: 4rem;
+	}
+	.loginTitle {
+		padding-bottom: 1rem;
+	}
+}

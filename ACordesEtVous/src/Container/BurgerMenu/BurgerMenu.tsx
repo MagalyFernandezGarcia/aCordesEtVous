@@ -56,6 +56,11 @@ const BurgerMenu = () => {
 						Contact
 					</a>
 				</li>
+				<li>
+					<a href="/login" className="menu-item login" onClick={closeMenu}>
+						Admin
+					</a>
+				</li>
 			</ul>
 		</Menu>
 	);
