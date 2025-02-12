@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LoginUser } from "../../Services/autServices";
 import "./login.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({
 	onSetAuth,
@@ -10,6 +11,7 @@ const Login = ({
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState<string | null>();
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -18,8 +20,11 @@ const Login = ({
 		try {
 			const success = await LoginUser(username, password);
 			if (success) {
+				console.log("login", username);
+
 				onSetAuth(username);
-				window.location.href = "/";
+				console.log("Navigate ?");
+				navigate("/");
 			} else {
 				setError("identifiants incorrects");
 			}

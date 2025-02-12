@@ -53,6 +53,7 @@ const DisplaysPage = ({
 	const sortedPackage = packages.filter((packages) =>
 		packages.composition.includes("bar")
 	);
+	console.log("salle", auth);
 
 	const amenagements = displays.map((display) => {
 		if (display)
@@ -140,9 +141,9 @@ const DisplaysPage = ({
 				</section>
 				<section className="rightSide desktopOnly">
 					<h2 className="titleTarifs ">Tarifs</h2>
-					<div>{tarifsList}</div>
+					<div className="containerTarifs">{tarifsList}</div>
 					<h2 className="titleTarifs">Forfaits</h2>
-					<div>{packagesList}</div>
+					<div className="containerTarifs">{packagesList}</div>
 				</section>
 			</section>
 			<section className="more">

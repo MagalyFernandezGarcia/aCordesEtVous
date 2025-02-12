@@ -29,6 +29,15 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	h1 {
+		/* Fix fucking WP */
+		font-weight: bold;
+	}
+
+	h2 {
+		/* Fix fucking WP */
+		font-weight: bold;
+	}
 }
 
 .app {
