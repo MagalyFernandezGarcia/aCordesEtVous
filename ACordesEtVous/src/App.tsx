@@ -12,6 +12,7 @@ import MaterialsLocation from "./Components/materialsLocation/MaterialsLocation"
 import Contact from "./Components/contact/Contact";
 import TarifsPage from "./Components/tarifsPage/TarifsPage";
 import Login from "./Container/login/Login";
+import UpdateForm from "./Container/upDateForm/UpdateForm";
 
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
@@ -56,6 +57,7 @@ function App() {
 						element={<TarifsPage onSetCurrentPage={setCurrentPage} />}
 					/>
 					<Route path="/login" element={<Login onSetAuth={setAuth} />} />
+					<Route path="upDate" element={<UpdateForm auth={auth} />} />
 				</Routes>
 			</section>
 			<section className="footer">
