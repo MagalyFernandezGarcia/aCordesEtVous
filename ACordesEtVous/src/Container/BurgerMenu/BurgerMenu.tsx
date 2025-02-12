@@ -1,6 +1,7 @@
 import { slide as Menu } from "react-burger-menu";
 import "./burgerMenu.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const BurgerMenu = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +18,9 @@ const BurgerMenu = () => {
 		<Menu right isOpen={isOpen} onStateChange={handleStateChange}>
 			<ul>
 				<li>
-					<a href="/" className="menu-item" onClick={closeMenu}>
+					<Link to="/" className="menu-item" onClick={closeMenu}>
 						Accueil
-					</a>
+					</Link>
 				</li>
 				<li>
 					<a href="/services" className="menu-item" onClick={closeMenu}>
@@ -27,39 +28,39 @@ const BurgerMenu = () => {
 					</a>
 				</li>
 				<li>
-					<a href="/nosidees" className="menu-item" onClick={closeMenu}>
+					<Link to="/nosidees" className="menu-item" onClick={closeMenu}>
 						Salle
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="/guinguette" className="menu-item" onClick={closeMenu}>
+					<Link to="/guinguette" className="menu-item" onClick={closeMenu}>
 						Guingette
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="/evenements" className="menu-item" onClick={closeMenu}>
+					<Link to="/evenements" className="menu-item" onClick={closeMenu}>
 						Evénements
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="/materiel" className="menu-item" onClick={closeMenu}>
+					<Link to="/materiel" className="menu-item" onClick={closeMenu}>
 						Matériel
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="/tarifs" className="menu-item" onClick={closeMenu}>
+					<Link to="/tarifs" className="menu-item" onClick={closeMenu}>
 						Tarifs
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="/contact" className="menu-item" onClick={closeMenu}>
+					<Link to="/contact" className="menu-item" onClick={closeMenu}>
 						Contact
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="/login" className="menu-item login" onClick={closeMenu}>
+					<Link to="/login" className="menu-item login" onClick={closeMenu}>
 						Admin
-					</a>
+					</Link>
 				</li>
 			</ul>
 		</Menu>

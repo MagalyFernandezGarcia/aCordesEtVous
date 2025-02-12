@@ -4,11 +4,12 @@ import "./header.css";
 const Header = ({ currentPage }: { currentPage: string }) => {
 	return (
 		<header className="headerContainer">
-			<section className="linkContainer">
-				<Link to="/">
+			<section className="logoHomeContainer">
+				<Link to="/" className="linkContainer">
 					<img className="logo" src="logo.jpg" alt="logo" />
+
+					<h1 className="currentPage desktop">A Cordes et Vous</h1>
 				</Link>
-				<h1 className="currentPage desktop">A Cordes et Vous</h1>
 
 				<h1 className="currentPage mobile">{currentPage}</h1>
 			</section>
@@ -18,7 +19,7 @@ const Header = ({ currentPage }: { currentPage: string }) => {
 				<Link to="/evenements">Evénements</Link>
 				<Link to="/materiel">Matériel</Link>
 				<Link to="/contact">Contact</Link>
-				<button className="loginBtn">Admin</button>
+				<Link to="/login">Admin</Link>
 			</section>
 			<section className="mobile">
 				<BurgerMenu />

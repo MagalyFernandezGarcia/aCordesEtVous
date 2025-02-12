@@ -19,10 +19,9 @@
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	padding-left: 1rem;
+
 	padding-right: 1rem;
 }
-
 
 .mobile {
 	display: none;
@@ -34,7 +33,12 @@
 	font-weight: bold;
 	font-size: 1.75rem;
 	text-align: center;
-	
+}
+.logoHomeContainer {
+	display: flex;
+	align-items: center;
+
+	padding-left: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -42,17 +46,11 @@
 		display: none;
 	}
 	.mobile {
-		display: block ;
-		
-		
-		
+		display: block;
 	}
 
 	.currentPage {
 		padding-right: 1.5rem;
 		color: #1f2421;
 	}
-
-	
-	
 }
