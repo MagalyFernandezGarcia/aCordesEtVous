@@ -6,7 +6,7 @@ import { updateDisplay } from "../../Services/updateServices";
 import { uploadMedia } from "../../Services/servicesAPI/uploadMedias";
 import { Photo } from "../../Types/pods";
 
-const UpdateForm = ({auth,
+const UpdateFormAmenagement = ({auth,
 	podId,}: 
 {
 	auth: string;
@@ -34,6 +34,17 @@ const UpdateForm = ({auth,
 		};
 		fetchData();
 	}, []);
+
+	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		console.log(e.target.files)
+		const file = e.target.files?.[0]; 
+	  
+		if (file) {
+		  uploadMedia(file); 
+		} else {
+		  console.log("No file selected");
+		}
+	  };
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, id: number) => {
 		e.preventDefault();
@@ -118,7 +129,7 @@ const UpdateForm = ({auth,
 				</div>
 				<div>
 					<label htmlFor="photos">Ajouter une photo</label>
-					<input type="file" id="photos" />
+					<input type="file" id="photos" onChange={handleFileChange}/>
 				</div>
 				<button type="submit" className="formSubmit" >
 					valider
@@ -130,4 +141,4 @@ const UpdateForm = ({auth,
 	return <div>oups</div>;
 };
 
-export default UpdateForm;
+export default UpdateFormAmenagement

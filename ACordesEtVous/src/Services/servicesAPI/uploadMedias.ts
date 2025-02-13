@@ -3,7 +3,8 @@ const { VITE_URL_WP } = import.meta.env;
 
 
 export const uploadMedia = async (file: File) => {
-	const url = "https://"+{VITE_URL_WP}+"wp/v2/media";
+	const url = `http://${VITE_URL_WP}wp/v2/media`
+    console.log("file in uploadMedia " ,file)
 
 	const formData = new FormData();
 	formData.append("file", file);

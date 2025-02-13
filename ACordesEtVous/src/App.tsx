@@ -12,7 +12,8 @@ import MaterialsLocation from "./Components/materialsLocation/MaterialsLocation"
 import Contact from "./Components/contact/Contact";
 import TarifsPage from "./Components/tarifsPage/TarifsPage";
 import Login from "./Container/login/Login";
-import UpdateForm from "./Container/upDateForm/UpdateForm";
+
+import UpdateFormAmenagement from "./Container/upDateForm/UpdateFormAmenagement";
 
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
@@ -65,8 +66,8 @@ function App() {
 					/>
 					<Route path="/login" element={<Login onSetAuth={setAuth} />} />
 					<Route
-						path="update"
-						element={<UpdateForm auth={auth} podId={podId} />}
+						path="updateDisplay"
+						element={<UpdateFormAmenagement auth={auth} podId={podId} />}
 					/>
 				</Routes>
 			</section>
