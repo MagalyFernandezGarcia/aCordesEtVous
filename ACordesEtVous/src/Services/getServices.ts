@@ -22,3 +22,6 @@ export const fetchMaterialsList = () => fetchDatasFromWP<Material>("locations");
 
 export const fetchDisplayById = (id: number) =>
 	fetchDatasFromWPById<Amenagement>("amenagements", id);
+
+export const fetchTarifById = (id: number) =>
+	fetchDatasFromWPById<Tarifs>("tarifs", id);

@@ -14,6 +14,7 @@ import TarifsPage from "./Components/tarifsPage/TarifsPage";
 import Login from "./Container/login/Login";
 
 import UpdateFormAmenagement from "./Container/upDateForm/UpdateFormAmenagement";
+import UpdateFormTarifs from "./Container/upDateForm/UpdateFormTarifs";
 
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
@@ -66,8 +67,12 @@ function App() {
 					/>
 					<Route path="/login" element={<Login onSetAuth={setAuth} />} />
 					<Route
-						path="updateDisplay"
+						path="/updateDisplay"
 						element={<UpdateFormAmenagement auth={auth} podId={podId} />}
+					/>
+					<Route
+						path="/updateTarifs"
+						element={<UpdateFormTarifs auth={auth} podId={podId} />}
 					/>
 				</Routes>
 			</section>

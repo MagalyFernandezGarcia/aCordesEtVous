@@ -19,22 +19,9 @@ export const fetchDatasFromWPById = async <T>(
 	return response.json();
 };
 
-// export const updateDatas = async <T>(route: string, id: number, data: T) => {
-// 	const url = "http://" + VITE_URL_WP + "wp/v2/" + route + "/" + id;
-
-// 	const response = await fetch(url, {
-// 		method: "PUT",
-// 		headers: { "content-Type": "application/json" },
-// 		body: JSON.stringify(data),
-
-// 		credentials: "include",
-// 	});
-
-// 	return response.json();
-// };
 
 export const updateDatas = async <T>(route: string, id: number, data: T) => {
-	const url = `http://${VITE_URL_WP}/wp/v2/${route}/${id}`;
+	const url = `http://${VITE_URL_WP}wp/v2/${route}/${id}`;
 
 	const response = await fetch(url, {
 		method: "PUT",

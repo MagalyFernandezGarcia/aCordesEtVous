@@ -1,0 +1,82 @@
+import { useEffect, useState } from "react";
+import { TarifPut, Tarifs } from "../../Types/tarifs";
+import { fetchTarifById } from "../../Services/getServices";
+import { updateTarif } from "../../Services/updateServices";
+
+const UpdateFormTarifs = ({
+  auth,
+  podId,
+}: {
+  auth: string;
+  podId: number | undefined;
+}) => {
+  const [tarif, setTarif] = useState<Tarifs>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let ignore = false;
+      if (podId) {
+        console.log(podId);
+
+        const result = await fetchTarifById(podId);
+        if (!ignore) {
+          setTarif(result);
+        }
+      }
+
+      return () => {
+        ignore = true;
+      };
+    };
+    fetchData();
+  }, []);
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+    id: number
+  ) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const data: TarifPut = {
+      id,
+      title: {
+        rendered: formData.get("wpTitle")?.toString() ?? "",
+      },
+      tarif_duree : formData.get("podTitle")?.toString(),
+      prix :formData.get("price")?.toString(),
+
+    };
+
+    updateTarif(id,data)
+  };
+
+  if (auth === "admin" && tarif) {
+    return (
+      <form className="formUpdate" onSubmit={(e) => handleSubmit(e, tarif.id)}>
+        <h1 className="formTitle">Modifier l'ambiance </h1>
+        <div>
+          <label htmlFor="wpTitle">Titre pour WordPress</label>
+          <input type="text" id="wpTitle" defaultValue={tarif.title.rendered} />
+        </div>
+        <div>
+          <label htmlFor="podTitle">Durée</label>
+          <input type="text" id="podTitle" defaultValue={tarif.tarif_duree} />
+        </div>
+        <div>
+          <label htmlFor="price">Prix</label>
+          <input type="number" id="price" defaultValue={tarif.prix} />
+        </div>
+
+        <button type="submit" className="formSubmit">
+          valider
+        </button>
+      </form>
+    );
+  }
+
+  return <div>oups</div>;
+};
+
+export default UpdateFormTarifs;
