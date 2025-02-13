@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { fetchDisplayById } from "../../Services/getServices";
-import { Amenagement, AmenagementPost } from "../../Types/amenagements";
+import { Amenagement, AmenagementPost, AmenagementPut } from "../../Types/amenagements";
 import "./updateForm.css";
 import { updateDisplay } from "../../Services/updateServices";
+import { uploadMedia } from "../../Services/servicesAPI/uploadMedias";
+import { Photo } from "../../Types/pods";
 
 const UpdateForm = ({}: // auth,
 // podId,
@@ -33,26 +35,57 @@ const UpdateForm = ({}: // auth,
 		fetchData();
 	}, []);
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, id: number) => {
-		//faire une fonction async et l'await. La fonction devra envoyer les images chargées par l'input file dans le dossier media de wordpress
-		//"https://a-cordes-et-vous.local/wp-json/wp/v2/media"
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, id: number) => {
 		e.preventDefault();
+		
+		const uploadedImages =await uploadMedia(e.currentTarget.files);
+		
+		
 		const formData = new FormData(e.currentTarget);
-		const data: AmenagementPost = {
-			//vérifier dans la doc WP comment se passe le typag avec les pods et changer le nom des value pour correspondre au type
-			title: formData.get("wpTitle")?.toString() ?? "",
-			nom_de_lambiance: formData.get("podTitle")?.toString() ?? "",
-			content: "",
-
-			// photos: formData.get("photos")?.toString() ,
-		};
-
+		
+		
+		const data: AmenagementPut = {
+			id,
+		  title: formData.get("wpTitle")?.toString() ?? "",
+		  nom_de_lambiance: formData.get("podTitle")?.toString() ?? "", 
+		  content:"",
+		  
+	  
+		  photos: uploadedImages.map((image :Photo) => ({
+			ID: image.ID,
+			post_author: image.post_author,
+			post_date: image.post_date,
+			post_date_gmt: image.post_date_gmt,
+			post_content: image.post_content,
+			post_title: image.post_title,
+			post_excerpt: image.post_excerpt,
+			post_status: image.post_status,
+			comment_status: image.comment_status,
+			ping_status: image.ping_status,
+			post_password: image.post_password,
+			post_name: image.post_name,
+			to_ping: image.to_ping,
+			pinged: image.pinged,
+			post_modified: image.post_modified,
+			post_modified_gmt: image.post_modified_gmt,
+			post_content_filtered: image.post_content_filtered,
+			post_parent: image.post_parent,
+			guid: image.guid,
+			menu_order: image.menu_order,
+			post_type: image.post_type,
+			post_mime_type: image.post_mime_type,
+			comment_count: image.comment_count,
+			pod_item_id: image.pod_item_id,
+		  })),}
+	  
+		
 		updateDisplay(id, data);
-	};
+	  };
+	  
 
 	if (auth === "admin" && display) {
 		return (
-			<form className="formUpdate">
+			<form className="formUpdate" onSubmit={(e) => handleSubmit(e, display.id)}>
 				<h1 className="formTitle">Modifier l'ambiance </h1>
 				<div>
 					<label htmlFor="wpTitle">Titre pour WordPress</label>
@@ -87,7 +120,7 @@ const UpdateForm = ({}: // auth,
 					<label htmlFor="photos">Ajouter une photo</label>
 					<input type="file" id="photos" />
 				</div>
-				<button type="submit" className="formSubmit">
+				<button type="submit" className="formSubmit" >
 					valider
 				</button>
 			</form>
