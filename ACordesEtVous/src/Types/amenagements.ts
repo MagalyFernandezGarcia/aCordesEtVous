@@ -1,4 +1,4 @@
-import { Photo, PodsAmenagement} from "./pods";
+import { Photo} from "./pods";
 
 export type Amenagement = {
 	id: number;

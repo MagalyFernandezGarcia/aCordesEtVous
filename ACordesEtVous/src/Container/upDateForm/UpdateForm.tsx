@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { fetchDisplayById } from "../../Services/getServices";
-import { Amenagement, AmenagementPost, AmenagementPut } from "../../Types/amenagements";
+import { Amenagement,  AmenagementPut } from "../../Types/amenagements";
 import "./updateForm.css";
 import { updateDisplay } from "../../Services/updateServices";
 import { uploadMedia } from "../../Services/servicesAPI/uploadMedias";
 import { Photo } from "../../Types/pods";
 
-const UpdateForm = ({}: // auth,
-// podId,
+const UpdateForm = ({auth,
+	podId,}: 
 {
-	// auth: string;
-	// podId: number | undefined;
+	auth: string;
+	podId: number | undefined;
 }) => {
 	const [display, setDisplay] = useState<Amenagement>();
-	const podId = 51;
-	const auth = "admin";
+	/* const podId = 51;
+	const auth = "admin"; */
 
 	useEffect(() => {
 		const fetchData = async () => {
