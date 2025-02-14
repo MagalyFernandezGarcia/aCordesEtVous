@@ -1,4 +1,8 @@
+
+
 const { VITE_URL_WP } = import.meta.env;
+
+
 
 export const fetchDatasFromWP = async <T>(route: string): Promise<T[]> => {
 	const url = "http://" + VITE_URL_WP + "wp/v2/" + route;
@@ -22,6 +26,8 @@ export const fetchDatasFromWPById = async <T>(
 
 export const updateDatas = async <T>(route: string, id: number, data: T) => {
 	const url = `http://${VITE_URL_WP}wp/v2/${route}/${id}`;
+	console.log('called');
+	
 
 	const response = await fetch(url, {
 		method: "PUT",
@@ -35,4 +41,5 @@ export const updateDatas = async <T>(route: string, id: number, data: T) => {
 	if (!response.ok) {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}
+	
 };

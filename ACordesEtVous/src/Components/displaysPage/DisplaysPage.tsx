@@ -87,7 +87,7 @@ const DisplaysPage = ({
   const tarifsList = tarifs.map((tarif) => {
     return (
       <div key={tarif.id} className="tarifContainer">
-        <p>{tarif.title.rendered}</p>
+        <p>{tarif.tarif_duree}</p>
         <p className="price">{tarif.prix} €</p>
         <Link to="/updateTarifs" onClick={() => onsetPodId(tarif.id)}>
           <img src="/pen.svg" alt="update icon" className="updateIcon" />

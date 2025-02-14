@@ -103,6 +103,7 @@ const UpdateFormAmenagement = ({auth,
 					<input
 						type="text"
 						id="wpTitle"
+						name="wpTitle"
 						defaultValue={display.title.rendered}
 					/>
 				</div>
@@ -111,6 +112,7 @@ const UpdateFormAmenagement = ({auth,
 					<input
 						type="text"
 						id="podTitle"
+						name="podTitle"
 						defaultValue={display.nom_de_lambiance}
 					/>
 				</div>
@@ -129,7 +131,7 @@ const UpdateFormAmenagement = ({auth,
 				</div>
 				<div>
 					<label htmlFor="photos">Ajouter une photo</label>
-					<input type="file" id="photos" onChange={handleFileChange}/>
+					<input type="file" id="photos" name="photos" onChange={handleFileChange}/>
 				</div>
 				<button type="submit" className="formSubmit" >
 					valider

@@ -36,18 +36,29 @@ const UpdateFormTarifs = ({
     id: number
   ) => {
     e.preventDefault();
+    console.log('passed on form"');
+    
 
     const formData = new FormData(e.currentTarget);
+    console.log("formData Entries:");
+for (const [key, value] of formData.entries()) {
+  console.log(key, value);
+}
+
+    
+    
 
     const data: TarifPut = {
       id,
       title: {
-        rendered: formData.get("wpTitle")?.toString() ?? "",
-      },
+        rendered: formData.get("wpTitle")?.toString() ?? ""},
+      
       tarif_duree : formData.get("podTitle")?.toString(),
       prix :formData.get("price")?.toString(),
 
     };
+    console.log("dataForm", data);
+    
 
     updateTarif(id,data)
   };
@@ -58,15 +69,15 @@ const UpdateFormTarifs = ({
         <h1 className="formTitle">Modifier l'ambiance </h1>
         <div>
           <label htmlFor="wpTitle">Titre pour WordPress</label>
-          <input type="text" id="wpTitle" defaultValue={tarif.title.rendered} />
+          <input type="text" id="wpTitle" name="wpTitle" defaultValue={tarif.title.rendered} />
         </div>
         <div>
           <label htmlFor="podTitle">Durée</label>
-          <input type="text" id="podTitle" defaultValue={tarif.tarif_duree} />
+          <input type="text" id="podTitle" name="podTitle" defaultValue={tarif.tarif_duree} />
         </div>
         <div>
           <label htmlFor="price">Prix</label>
-          <input type="number" id="price" defaultValue={tarif.prix} />
+          <input type="number" id="price" name="price" defaultValue={tarif.prix} />
         </div>
 
         <button type="submit" className="formSubmit">
