@@ -58,6 +58,8 @@ const DisplaysPage = ({
 
   const amenagements = displays.map((display) => {
     if (display)
+      
+      
       return (
         <div key={display.id} className="galleryContainer">
           <div className="displayTitle">
