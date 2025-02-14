@@ -4,7 +4,9 @@ const { VITE_URL_WP } = import.meta.env;
 
 export const uploadMedia = async (file: File) => {
 	const url = `http://${VITE_URL_WP}wp/v2/media`
-    console.log("file in uploadMedia " ,file)
+   
+	
+
 
 	const formData = new FormData();
 	formData.append("file", file);
@@ -13,6 +15,11 @@ export const uploadMedia = async (file: File) => {
 	const response = await fetch(url, {
 		method: "POST",
 		credentials: "include", 
+		headers: {
+			
+            "X-WP-Nonce": (window as any).wpApiSettings?.nonce,  
+        },
+		
 		body: formData, 
 	});
 
