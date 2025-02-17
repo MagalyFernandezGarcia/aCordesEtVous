@@ -41,23 +41,21 @@ const UpdateFormTarifs = ({
     id?: number
   ) => {
     e.preventDefault();
-    console.log('passed on form"');
+   
     
 
     const formData = new FormData(e.currentTarget);
-    console.log("formData Entries:");
-for (const [key, value] of formData.entries()) {
-  console.log(key, value);
-}
+    
+
 
     
     if(id){
       const data: TarifPut = {
         id,
         title: {
-          rendered: formData.get("wpTitle")?.toString() ?? ""},
+          rendered: formData.get("nameWP")?.toString() ?? ""},
         
-        tarif_duree : formData.get("podTitle")?.toString(),
+        tarif_duree : formData.get("duration")?.toString(),
         prix :formData.get("price")?.toString(),
   
       };

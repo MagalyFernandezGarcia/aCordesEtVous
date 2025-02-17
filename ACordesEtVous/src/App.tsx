@@ -16,6 +16,7 @@ import Login from "./Container/login/Login";
 import UpdateFormAmenagement from "./updatePages/UpdateFormAmenagement";
 import UpdateFormTarifs from "./updatePages/UpdateFormTarifs";
 import UpdateFormPackages from "./updatePages/UpdateFormPackages";
+import UpdateFormSchedule from "./updatePages/UpdateFormSchedule";
 
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
@@ -48,7 +49,7 @@ function App() {
 					/>
 					<Route
 						path="/guinguette"
-						element={<Guinguette onSetCurrentPage={setCurrentPage} />}
+						element={<Guinguette onSetCurrentPage={setCurrentPage} onsetPodId={setPodId} />}
 					/>
 					<Route
 						path="/evenements"
@@ -76,6 +77,7 @@ function App() {
 						element={<UpdateFormTarifs  podId={podId} />}
 					/>
 					<Route path="/updatePackages" element={<UpdateFormPackages podId={podId} />} />
+					<Route path="/updateSchedule" element={<UpdateFormSchedule podId={podId} />} />
 				</Routes>
 			</section>
 			<section className="footer">

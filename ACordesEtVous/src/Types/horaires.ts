@@ -69,3 +69,38 @@ export type Horaire = {
     }
   }
   
+
+  export type HorairePut = {
+    id: number 
+    slug?: string
+    status?: string
+    title?: { rendered: string }
+    template?: string
+    class_list?: string[] 
+    jours?: string 
+    heure?: string 
+    precision?: string 
+    image_de_lhoraire?: { ID: string } 
+    _links: {
+      self: Array<{
+        href: string
+        targetHints: {
+          allow: Array<string>
+        }
+      }>
+      collection: Array<{
+        href: string
+      }>
+      about: Array<{
+        href: string
+      }>
+      "wp:attachment": Array<{
+        href: string
+      }>
+      curies: Array<{
+        name: string
+        href: string
+        templated: boolean
+      }>
+    }
+  };

@@ -28,3 +28,6 @@ export const fetchTarifById = (id: number) =>
 
 export const fetchPackageById = (id: number) =>
 	fetchDatasFromWPById<Package>("forfaits", id);
+
+export const fetchScheduleById = (id: number) =>
+	fetchDatasFromWPById<Horaire>("horaires", id);

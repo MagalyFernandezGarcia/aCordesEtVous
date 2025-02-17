@@ -1,4 +1,5 @@
 import { Tarifs } from "../../Types/tarifs"
+import "./forms.css"
 
 
 
