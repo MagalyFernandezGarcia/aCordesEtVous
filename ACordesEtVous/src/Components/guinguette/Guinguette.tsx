@@ -49,9 +49,13 @@ const Guinguette = ({
     
     if (schedule.precision !== "A partir de") {
       return (
+        <>
+        <img src={schedule.image_de_lhoraire.guid} alt="horaire" className="scheduleImg" />
         <h3 key={schedule.id} className="subTitle">
           {schedule.precision}
         </h3>
+        </>
+
       );
     } else if (schedule.jours === "Dimanche") {
       return (
