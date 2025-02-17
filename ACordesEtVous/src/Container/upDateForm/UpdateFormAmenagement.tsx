@@ -5,6 +5,8 @@ import "./updateForm.css";
 import { updateDisplay } from "../../Services/updateServices";
 import { uploadMedia } from "../../Services/servicesAPI/uploadMedias";
 import { fetchCurrentUser } from "../../Services/autServices";
+import { Photo } from "../../Types/pods";
+import { deletePhoto } from "../../Services/deleteService";
 
 
 const UpdateFormAmenagement = ({
@@ -15,8 +17,7 @@ const UpdateFormAmenagement = ({
   podId: number | undefined;
 }) => {
   const [display, setDisplay] = useState<Amenagement>();
-  /* const podId = 51;
-	*/
+ 
 
   const [auth, setAuth] = useState("");
 
@@ -46,9 +47,7 @@ const UpdateFormAmenagement = ({
 
     if (file && podId && display) {
       uploadMedia(file, podId,display.title.rendered );
-    } else {
-      console.log("No file selected");
-    }
+    } 
   };
 
   const handleSubmit = async (
@@ -90,6 +89,19 @@ const UpdateFormAmenagement = ({
     }
   };
 
+  const removePhoto = (photoId: string) => {
+    if (display){
+      const updatedPhotos : Photo[] = display.photos.filter((photo) => parseInt(photo.ID) !== parseInt(photoId))
+      setDisplay({ ...display, photos: updatedPhotos } );
+    
+    }
+      deletePhoto(parseInt(photoId))
+
+     
+
+
+  }
+
   if (auth === "admin" && display) {
     return (
       <form
@@ -97,8 +109,8 @@ const UpdateFormAmenagement = ({
         onSubmit={(e) => handleSubmit(e, display.id)}
       >
         <h1 className="formTitle">Modifier l'ambiance </h1>
-        <div>
-          <label htmlFor="wpTitle">Titre pour WordPress</label>
+        <div >
+          <label htmlFor="wpTitle">Titre pour WordPress : </label>
           <input
             type="text"
             id="wpTitle"
@@ -107,7 +119,7 @@ const UpdateFormAmenagement = ({
           />
         </div>
         <div>
-          <label htmlFor="podTitle">Nom de l'ambiance</label>
+          <label htmlFor="podTitle">Nom de l'ambiance : </label>
           <input
             type="text"
             id="podTitle"
@@ -115,21 +127,26 @@ const UpdateFormAmenagement = ({
             defaultValue={display.nom_de_lambiance}
           />
         </div>
-        {/* Ajouter la possibilité de supprimer une photo par la suite */}
+        
         <div>
           {display.photos.map((photo) => {
             return (
+              <div>
               <img
                 key={photo.ID}
                 src={photo.guid}
                 alt="aménagement"
                 className="photo"
               />
+               <span className="deletePhoto" onClick={() => removePhoto(photo.ID)}>
+        &times;
+      </span>
+              </div>
             );
           })}
         </div>
         <div>
-          <label htmlFor="photos">Ajouter une photo</label>
+          <label htmlFor="photos">Ajouter une photo : </label>
           <input
             type="file"
             id="photos"

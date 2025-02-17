@@ -65,3 +65,20 @@ export const createDatas = async <T>(route: string, data: T) => {
 	}
 	
 };
+
+export const deleteDatas = async (route: string, id: number) => {
+	const url = `http://${VITE_URL_WP}wp/v2/${route}/${id}?force=true`;
+
+	const response = await fetch(url, {
+		method: "DELETE",
+		headers: {
+			"Content-Type": "application/json",
+			"X-WP-Nonce": (window as any).wpApiSettings?.nonce,
+		},
+		credentials: "include",
+	});
+
+	if (!response.ok) {
+		throw new Error(`Error: ${response.status} ${response.statusText}`);
+	}
+};

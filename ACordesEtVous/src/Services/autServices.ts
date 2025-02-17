@@ -1,5 +1,5 @@
 
-/* const { VITE_URL_WP } = import.meta.env; */
+
 
 export async function LoginUser(
 	username: string,
@@ -46,7 +46,7 @@ export async function fetchCurrentUser(): Promise<{id: number; name: string} | n
       }
   
       const data = await resp.json();
-      // data = { id: 1, name: "admin", ... }
+      
       return { id: data.id, name: data.name };
     } catch (err) {
       console.error('Erreur fetchCurrentUser:', err);

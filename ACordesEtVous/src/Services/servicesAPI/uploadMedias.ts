@@ -22,9 +22,9 @@ export const uploadMedia = async (file: File, podId : number, displayTitle : str
   }
 
   const normalizeDate = (date: string): string => {
-	// Convert any date string to a standard format: "YYYY-MM-DD HH:mm:ss"
+	
 	const parsedDate = new Date(date);
-	return parsedDate.toISOString().slice(0, 19).replace('T', ' '); // Format as "YYYY-MM-DD HH:mm:ss"
+	return parsedDate.toISOString().slice(0, 19).replace('T', ' ');
   };
 
   const photoData = await response.json();
