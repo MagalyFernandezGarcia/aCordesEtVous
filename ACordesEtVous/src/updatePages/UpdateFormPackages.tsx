@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Package } from "../../Types/package";
-import { fetchCurrentUser } from "../../Services/autServices";
-import { fetchPackageById } from "../../Services/getServices";
+import { Package } from "../Types/package";
+import { fetchCurrentUser } from "../Services/autServices";
+import { fetchPackageById } from "../Services/getServices";
+import FormPackages from "../Container/Forms/FormPackages";
 
 
 const UpdateFormPackages = ( {podId } : {podId : number | undefined}) => {
@@ -30,13 +31,15 @@ useEffect(() => {
     fetchData();
   }, []);
 
-
+  if (auth === "admin" && forfait) {
     return (
-        <form>
-            
+      <FormPackages forfait={forfait} onHandleSubmit={() => {}}/>
+  )
+    
+  }
 
-        </form>
-    )
+
+    
 }
 
 export default UpdateFormPackages

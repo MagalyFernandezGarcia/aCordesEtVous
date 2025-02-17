@@ -13,9 +13,9 @@ import Contact from "./Components/contact/Contact";
 import TarifsPage from "./Components/tarifsPage/TarifsPage";
 import Login from "./Container/login/Login";
 
-import UpdateFormAmenagement from "./Container/upDateForm/UpdateFormAmenagement";
-import UpdateFormTarifs from "./Container/upDateForm/UpdateFormTarifs";
-import UpdateFormPackages from "./Container/upDateForm/UpdateFormPackages";
+import UpdateFormAmenagement from "./updatePages/UpdateFormAmenagement";
+import UpdateFormTarifs from "./updatePages/UpdateFormTarifs";
+import UpdateFormPackages from "./updatePages/UpdateFormPackages";
 
 function App() {
 	const [currentPage, setCurrentPage] = useState("");

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { fetchDisplayById } from "../../Services/getServices";
-import { Amenagement, AmenagementPut } from "../../Types/amenagements";
-import "./updateForm.css";
-import { updateDisplay } from "../../Services/updateServices";
-import { uploadMedia } from "../../Services/servicesAPI/uploadMedias";
-import { fetchCurrentUser } from "../../Services/autServices";
-import { Photo } from "../../Types/pods";
-import { deletePhoto } from "../../Services/deleteService";
+import { fetchDisplayById } from "../Services/getServices";
+import { Amenagement, AmenagementPut } from "../Types/amenagements";
+
+import { updateDisplay } from "../Services/updateServices";
+import { uploadMedia } from "../Services/servicesAPI/uploadMedias";
+import { fetchCurrentUser } from "../Services/autServices";
+import { Photo } from "../Types/pods";
+import { deletePhoto } from "../Services/deleteService";
 
 
 const UpdateFormAmenagement = ({
