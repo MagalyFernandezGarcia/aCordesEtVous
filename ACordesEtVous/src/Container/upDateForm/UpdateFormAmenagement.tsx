@@ -67,7 +67,7 @@ const UpdateFormAmenagement = ({
       }
       const mergedPhotos = [...existingPhotos, ...uploadedImages];
 
-      console.log("mergedPhotos", mergedPhotos);
+      
 	  
 
       const data: AmenagementPut = {
@@ -76,10 +76,10 @@ const UpdateFormAmenagement = ({
         nom_de_lambiance: formData.get("podTitle")?.toString() ?? "",
         content: "",
 
-        photos: mergedPhotos
+        photos: mergedPhotos.map((photo) => photo.ID),
       };
 
-      console.log("dataForm", data);
+      
 
       updateDisplay(id, data);
     }
