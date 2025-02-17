@@ -105,6 +105,11 @@
 	font-size: 1.5rem !important;
 }
 
+.titlePen{
+	display: flex;
+	gap: 1rem;
+}
+
 @media (max-width: 768px) {
 	.desktopOnly {
 		display: none;

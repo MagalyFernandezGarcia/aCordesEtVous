@@ -2,25 +2,29 @@ import { useEffect, useState } from "react";
 import { TarifPut, Tarifs } from "../../Types/tarifs";
 import { fetchTarifById } from "../../Services/getServices";
 import { updateTarif } from "../../Services/updateServices";
+import { fetchCurrentUser } from "../../Services/autServices";
 
 const UpdateFormTarifs = ({
-  auth,
+  
   podId,
 }: {
-  auth: string;
+  
   podId: number | undefined;
 }) => {
   const [tarif, setTarif] = useState<Tarifs>();
+  const [auth, setAuth] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       let ignore = false;
       if (podId) {
-        console.log(podId);
+        
 
         const result = await fetchTarifById(podId);
+        const resultAuth = await fetchCurrentUser()
         if (!ignore) {
           setTarif(result);
+          setAuth(resultAuth?.name ?? "")
         }
       }
 

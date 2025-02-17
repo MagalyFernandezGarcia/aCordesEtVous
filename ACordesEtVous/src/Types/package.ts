@@ -43,3 +43,37 @@ export type Package = {
     }
   }
   
+
+  export type PackagePut = {
+    id: number 
+    slug?: string
+    status?: string
+    title?: { rendered: string }
+    template?: string
+    class_list?: string[] 
+    composition?: string
+    duree?: string
+    prix?: string
+    _links?: {
+      self: Array<{
+        href: string;
+        targetHints: {
+          allow: Array<string>;
+        };
+      }>;
+      collection: Array<{
+        href: string;
+      }>;
+      about: Array<{
+        href: string;
+      }>;
+      "wp:attachment": Array<{
+        href: string;
+      }>;
+      curies: Array<{
+        name: string;
+        href: string;
+        templated: boolean;
+      }>;
+    };
+  }

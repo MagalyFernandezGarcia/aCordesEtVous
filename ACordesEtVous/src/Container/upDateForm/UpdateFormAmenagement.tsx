@@ -25,7 +25,7 @@ const UpdateFormAmenagement = ({
     const fetchData = async () => {
       let ignore = false;
       if (podId) {
-        console.log(podId);
+        
 
         const result = await fetchDisplayById(podId);
         const resultAuth = await fetchCurrentUser()

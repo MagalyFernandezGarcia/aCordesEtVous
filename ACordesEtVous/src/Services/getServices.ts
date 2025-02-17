@@ -25,3 +25,6 @@ export const fetchDisplayById = (id: number) =>
 
 export const fetchTarifById = (id: number) =>
 	fetchDatasFromWPById<Tarifs>("tarifs", id);
+
+export const fetchPackageById = (id: number) =>
+	fetchDatasFromWPById<Package>("forfaits", id);

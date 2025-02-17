@@ -14,7 +14,8 @@ import TarifsPage from "./Components/tarifsPage/TarifsPage";
 import Login from "./Container/login/Login";
 
 import UpdateFormAmenagement from "./Container/upDateForm/UpdateFormAmenagement";
-/* import UpdateFormTarifs from "./Container/upDateForm/UpdateFormTarifs"; */
+import UpdateFormTarifs from "./Container/upDateForm/UpdateFormTarifs";
+import UpdateFormPackages from "./Container/upDateForm/UpdateFormPackages";
 
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
@@ -70,10 +71,11 @@ function App() {
 						path="/updateDisplay"
 						element={<UpdateFormAmenagement  podId={podId} />}
 					/>
-					{/* <Route
+					<Route
 						path="/updateTarifs"
 						element={<UpdateFormTarifs  podId={podId} />}
-					/> */}
+					/>
+					<Route path="/updatePackages" element={<UpdateFormPackages podId={podId} />} />
 				</Routes>
 			</section>
 			<section className="footer">

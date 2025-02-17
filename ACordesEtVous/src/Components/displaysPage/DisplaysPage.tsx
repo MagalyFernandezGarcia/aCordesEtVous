@@ -17,11 +17,11 @@ import { fetchCurrentUser } from "../../Services/autServices";
 
 const DisplaysPage = ({
   onSetCurrentPage,
-  
+
   onsetPodId,
 }: {
   onSetCurrentPage: React.Dispatch<React.SetStateAction<string>>;
-  
+
   onsetPodId: React.Dispatch<React.SetStateAction<number | undefined>>;
 }) => {
   const [displays, setDisplays] = useState<Amenagement[]>([]);
@@ -39,13 +39,13 @@ const DisplaysPage = ({
       const resultDispalys = await fetchDisplayList();
       const resultTarifs = await fetchTarifsList();
       const resultPackages = await fetchPackageList();
-      const resultAuth = await fetchCurrentUser()
+      const resultAuth = await fetchCurrentUser();
       if (!ignore) {
         setDisplays(resultDispalys);
 
         setTarifs(resultTarifs);
         setPackages(resultPackages);
-        setAuth(resultAuth?.name ?? "")
+        setAuth(resultAuth?.name ?? "");
       }
 
       return () => {
@@ -62,8 +62,6 @@ const DisplaysPage = ({
 
   const amenagements = displays.map((display) => {
     if (display)
-      
-      
       return (
         <div key={display.id} className="galleryContainer">
           <div className="displayTitle">
@@ -93,11 +91,15 @@ const DisplaysPage = ({
   const tarifsList = tarifs.map((tarif) => {
     return (
       <div key={tarif.id} className="tarifContainer">
+        <div className="titlePen">
+        {auth === "admin" && (
+          <Link to="/updateTarifs" onClick={() => onsetPodId(tarif.id)}>
+            <img src="/pen.svg" alt="update icon" className="updateIcon" />
+          </Link>
+        )}
         <p>{tarif.tarif_duree}</p>
+        </div>
         <p className="price">{tarif.prix} €</p>
-        <Link to="/updateTarifs" onClick={() => onsetPodId(tarif.id)}>
-          <img src="/pen.svg" alt="update icon" className="updateIcon" />
-        </Link>
       </div>
     );
   });
@@ -105,9 +107,16 @@ const DisplaysPage = ({
   const packagesList = sortedPackage.map((forfait) => {
     return (
       <div key={forfait.id} className="tarifContainer">
+        <div className="titlePen">
+        {auth === "admin" && (
+          <Link to="/updatePackages" onClick={() => onsetPodId(forfait.id)}>
+            <img src="/pen.svg" alt="update icon" className="updateIcon" />
+          </Link>
+        )}
         <p>
           {forfait.composition} ({forfait.duree})
         </p>
+        </div>
         <p className="price">{forfait.prix} €</p>
       </div>
     );
