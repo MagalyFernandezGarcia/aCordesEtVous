@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Package } from "../Types/package";
+import { Package, PackagePut } from "../Types/package";
 import { fetchCurrentUser } from "../Services/autServices";
 import { fetchPackageById } from "../Services/getServices";
 import FormPackages from "../Container/Forms/FormPackages";
+import { updatePackage } from "../Services/updateServices";
 
 
 const UpdateFormPackages = ( {podId } : {podId : number | undefined}) => {
@@ -30,10 +31,30 @@ useEffect(() => {
     };
     fetchData();
   }, []);
+const handleSubmit =async ( e: React.FormEvent<HTMLFormElement>,
+  id?: number)=>{
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    if(id){
+          const data: PackagePut = {
+            id,
+            title: {
+              rendered: formData.get("nameWP")?.toString() ?? ""},
+            
+            composition: formData.get("composition")?.toString(),
+            duree: formData.get("duration")?.toString(),
+            prix :formData.get("price")?.toString(),
+      
+          };
+          
+      
+          updatePackage(id,data)
+        }
 
+  }
   if (auth === "admin" && forfait) {
     return (
-      <FormPackages forfait={forfait} onHandleSubmit={() => {}}/>
+      <FormPackages forfait={forfait} onHandleSubmit={handleSubmit}/>
   )
     
   }
