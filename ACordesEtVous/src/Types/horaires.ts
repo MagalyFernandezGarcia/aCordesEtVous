@@ -1,3 +1,5 @@
+import { Photo } from "./pods"
+
 export type Horaire = {
     id: number
     date: string
@@ -80,8 +82,8 @@ export type Horaire = {
     jours?: string 
     heure?: string 
     precision?: string 
-    image_de_lhoraire?: { ID: string } 
-    _links: {
+    image_de_lhoraire?: Photo 
+    _links?: {
       self: Array<{
         href: string
         targetHints: {

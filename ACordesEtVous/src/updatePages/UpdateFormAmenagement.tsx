@@ -64,8 +64,8 @@ const UpdateFormAmenagement = ({
 
       const uploadedFiles = formData.get("photos") as File | null;
 
-      let uploadedImages = [];
-      if (uploadedFiles && uploadedFiles && podId) {
+      const uploadedImages = [];
+      if (uploadedFiles && podId) {
         const uploadedImage = await uploadMedia(uploadedFiles, podId, display.title.rendered);
         uploadedImages.push(uploadedImage);
       }
