@@ -14,11 +14,11 @@ import TarifsPage from "./Components/tarifsPage/TarifsPage";
 import Login from "./Container/login/Login";
 
 import UpdateFormAmenagement from "./Container/upDateForm/UpdateFormAmenagement";
-import UpdateFormTarifs from "./Container/upDateForm/UpdateFormTarifs";
+/* import UpdateFormTarifs from "./Container/upDateForm/UpdateFormTarifs"; */
 
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
-	const [auth, setAuth] = useState("");
+	
 	const [podId, setPodId] = useState<number>();
 	return (
 		<section className="app">
@@ -36,7 +36,7 @@ function App() {
 						element={
 							<DisplaysPage
 								onSetCurrentPage={setCurrentPage}
-								auth={auth}
+								
 								onsetPodId={setPodId}
 							/>
 						}
@@ -65,15 +65,15 @@ function App() {
 						path="/tarifs"
 						element={<TarifsPage onSetCurrentPage={setCurrentPage} />}
 					/>
-					<Route path="/login" element={<Login onSetAuth={setAuth} />} />
+					<Route path="/login" element={<Login  />} />
 					<Route
 						path="/updateDisplay"
-						element={<UpdateFormAmenagement auth={auth} podId={podId} />}
+						element={<UpdateFormAmenagement  podId={podId} />}
 					/>
-					<Route
+					{/* <Route
 						path="/updateTarifs"
-						element={<UpdateFormTarifs auth={auth} podId={podId} />}
-					/>
+						element={<UpdateFormTarifs  podId={podId} />}
+					/> */}
 				</Routes>
 			</section>
 			<section className="footer">

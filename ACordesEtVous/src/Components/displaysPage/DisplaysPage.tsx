@@ -13,14 +13,15 @@ import {
   fetchTarifsList,
 } from "../../Services/getServices";
 import { Link } from "react-router-dom";
+import { fetchCurrentUser } from "../../Services/autServices";
 
 const DisplaysPage = ({
   onSetCurrentPage,
-  auth,
+  
   onsetPodId,
 }: {
   onSetCurrentPage: React.Dispatch<React.SetStateAction<string>>;
-  auth: string;
+  
   onsetPodId: React.Dispatch<React.SetStateAction<number | undefined>>;
 }) => {
   const [displays, setDisplays] = useState<Amenagement[]>([]);
@@ -28,6 +29,7 @@ const DisplaysPage = ({
   const [packages, setPackages] = useState<Package[]>([]);
   const [openModal, setOpenModal] = useState(false);
   const [galleryId, setGalleryId] = useState(0);
+  const [auth, setAuth] = useState("");
 
   useEffect(() => {
     onSetCurrentPage("Quelques idées");
@@ -37,11 +39,13 @@ const DisplaysPage = ({
       const resultDispalys = await fetchDisplayList();
       const resultTarifs = await fetchTarifsList();
       const resultPackages = await fetchPackageList();
+      const resultAuth = await fetchCurrentUser()
       if (!ignore) {
         setDisplays(resultDispalys);
 
         setTarifs(resultTarifs);
         setPackages(resultPackages);
+        setAuth(resultAuth?.name ?? "")
       }
 
       return () => {

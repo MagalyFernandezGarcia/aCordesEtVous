@@ -4,9 +4,9 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({
-	onSetAuth,
+	
 }: {
-	onSetAuth: React.Dispatch<React.SetStateAction<string>>;
+	
 }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -20,10 +20,7 @@ const Login = ({
 		try {
 			const success = await LoginUser(username, password);
 			if (success) {
-				console.log("login", username);
-
-				onSetAuth(username);
-				console.log("Navigate ?");
+				
 				navigate("/");
 			} else {
 				setError("identifiants incorrects");

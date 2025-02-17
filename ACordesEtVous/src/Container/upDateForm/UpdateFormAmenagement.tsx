@@ -4,18 +4,21 @@ import { Amenagement, AmenagementPut } from "../../Types/amenagements";
 import "./updateForm.css";
 import { updateDisplay } from "../../Services/updateServices";
 import { uploadMedia } from "../../Services/servicesAPI/uploadMedias";
+import { fetchCurrentUser } from "../../Services/autServices";
 
 
 const UpdateFormAmenagement = ({
-  auth,
+  
   podId,
 }: {
-  auth: string;
+ 
   podId: number | undefined;
 }) => {
   const [display, setDisplay] = useState<Amenagement>();
   /* const podId = 51;
-	const auth = "admin"; */
+	*/
+
+  const [auth, setAuth] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +27,8 @@ const UpdateFormAmenagement = ({
         console.log(podId);
 
         const result = await fetchDisplayById(podId);
+        const resultAuth = await fetchCurrentUser()
+        setAuth(resultAuth?.name ?? "")
         if (!ignore) {
           setDisplay(result);
         }
