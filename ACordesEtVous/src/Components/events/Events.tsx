@@ -3,17 +3,22 @@ import { fetchEventsList } from "../../Services/getServices";
 import { Evenement } from "../../Types/evenements";
 import "./events.css";
 import ModalEvent from "./modal/ModalEvents";
+import { Link } from "react-router-dom";
+import { fetchCurrentUser } from "../../Services/autServices";
 
 const Events = ({
   onSetCurrentPage,
+  onsetPodId
 }: {
   onSetCurrentPage: React.Dispatch<React.SetStateAction<string>>;
+  onsetPodId :  React.Dispatch<React.SetStateAction<number | undefined>>;
 }) => {
   const [passedEvent, setPassedEvent] = useState<Evenement[]>([]);
   const [actualEvent, setActualEvent] = useState<Evenement[]>([]);
   const [imageEvent, setImageEvent] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [isPassedSelected, setIsPassedSelected] = useState(false);
+  const [auth, setAuth]= useState("")
 
   useEffect(() => {
     onSetCurrentPage("Evènements");
@@ -21,6 +26,7 @@ const Events = ({
       let ignore = false;
 
       const result = await fetchEventsList();
+      const resultAuth = await fetchCurrentUser()
 
       const sortedResult = [...result].sort((a, b) => a.id - b.id);
       const todayMonth = new Date().getMonth();
@@ -49,6 +55,7 @@ const Events = ({
       if (!ignore) {
         setPassedEvent(passedEvents);
         setActualEvent(actualEvents);
+        setAuth(resultAuth?.name ?? "");
       }
 
       return () => {
@@ -87,12 +94,16 @@ const Events = ({
             events={passedEvent}
             onSetImgEvent={setImageEvent}
             onSetOpenModal={setOpenModal}
+            onSetPodId={onsetPodId}
+            auth={auth}
           />
         ) : (
           <DisplayEvents
             events={actualEvent}
             onSetImgEvent={setImageEvent}
             onSetOpenModal={setOpenModal}
+            onSetPodId={onsetPodId}
+            auth={auth}
           />
         )}
       </section>
@@ -106,10 +117,14 @@ const DisplayEvents = ({
   events,
   onSetImgEvent,
   onSetOpenModal,
+  onSetPodId,
+  auth
 }: {
   events: Evenement[];
   onSetImgEvent: React.Dispatch<React.SetStateAction<string>>;
   onSetOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  onSetPodId :  React.Dispatch<React.SetStateAction<number | undefined>>;
+  auth : string
 }) => {
   return (
     <>
@@ -138,7 +153,17 @@ const DisplayEvents = ({
             <button className="btnImg" onClick={handleClickImg}>
               <img src={event.banniere.guid} alt="" className="banniere" />
             </button>
+            <div className="updateEventContainer">
             <p className="titleEvent">{event.nom_de_levenement}</p>
+            {auth === "admin" && <Link
+                to="/updateEvent"
+                onClick={() => onSetPodId(event.id)}
+              >
+                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+              </Link>}
+            
+            </div>
+            
             <div className="infoEvent">
               <p>
                 {event.date_de_fin

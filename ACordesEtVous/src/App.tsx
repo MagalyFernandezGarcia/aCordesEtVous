@@ -54,7 +54,7 @@ function App() {
 					/>
 					<Route
 						path="/evenements"
-						element={<Events onSetCurrentPage={setCurrentPage} />}
+						element={<Events onSetCurrentPage={setCurrentPage} onsetPodId={setPodId} />}
 					/>
 					<Route
 						path="/materiel"

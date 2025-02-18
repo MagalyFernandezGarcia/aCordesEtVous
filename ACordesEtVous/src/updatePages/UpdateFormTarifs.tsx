@@ -5,13 +5,7 @@ import { updateTarif } from "../Services/updateServices";
 import { fetchCurrentUser } from "../Services/autServices";
 import FormTarifs from "../Container/Forms/FormTarifs";
 
-const UpdateFormTarifs = ({
-  
-  podId,
-}: {
-  
-  podId: number | undefined;
-}) => {
+const UpdateFormTarifs = ({ podId }: { podId: number | undefined }) => {
   const [tarif, setTarif] = useState<Tarifs>();
   const [auth, setAuth] = useState("");
 
@@ -19,13 +13,11 @@ const UpdateFormTarifs = ({
     const fetchData = async () => {
       let ignore = false;
       if (podId) {
-        
-
         const result = await fetchTarifById(podId);
-        const resultAuth = await fetchCurrentUser()
+        const resultAuth = await fetchCurrentUser();
         if (!ignore) {
           setTarif(result);
-          setAuth(resultAuth?.name ?? "")
+          setAuth(resultAuth?.name ?? "");
         }
       }
 
@@ -41,36 +33,26 @@ const UpdateFormTarifs = ({
     id?: number
   ) => {
     e.preventDefault();
-   
-    
 
     const formData = new FormData(e.currentTarget);
-    
 
-
-    
-    if(id){
+    if (id) {
       const data: TarifPut = {
         id,
         title: {
-          rendered: formData.get("nameWP")?.toString() ?? ""},
-        
-        tarif_duree : formData.get("duration")?.toString(),
-        prix :formData.get("price")?.toString(),
-  
-      };
-      
-  
-      updateTarif(id,data)
-    }
+          rendered: formData.get("nameWP")?.toString() ?? "",
+        },
 
-    
+        tarif_duree: formData.get("duration")?.toString(),
+        prix: formData.get("price")?.toString(),
+      };
+
+      updateTarif(id, data);
+    }
   };
 
   if (auth === "admin" && tarif) {
-    return (
-      <FormTarifs tarif={tarif} onHandleSubmit={handleSubmit} />
-    );
+    return <FormTarifs tarif={tarif} onHandleSubmit={handleSubmit} />;
   }
 
   return <div>oups</div>;

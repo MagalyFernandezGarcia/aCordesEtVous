@@ -85,8 +85,17 @@
 .desktopOnly{
     display: block;
 }
+.updateEventContainer{
+    display: flex;
+    justify-content: center;
+    position: relative;
 
-
+    
+}
+.updateIcon{
+    position: absolute;
+    right: 5%;
+}
 
 @media (max-width: 768px) {
     .desktopOnly {
@@ -123,5 +132,8 @@
     }
     .cardEvent{
         width: 23rem;
+    }
+    .updateIcon{
+        top : 20%
     }
   }

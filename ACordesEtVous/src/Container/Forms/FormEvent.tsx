@@ -7,11 +7,11 @@ const FormEvent = ({
   event?: Evenement;
   onHandleSubmit: (
     e: React.FormEvent<HTMLFormElement>,
-    id: number 
+    id: number | undefined
   ) => void;
 }) => {
   return (
-    <form className="form">
+    <form className="form" onSubmit={(e) => onHandleSubmit(e, event?.id )}>
       <h1 className="formTitle">
         {event ? "Modifier l'évènement" : "Ajouter un évènement"}
       </h1>
@@ -50,8 +50,11 @@ const FormEvent = ({
       </div>
       <div>
         <label htmlFor="img">Image : </label>
-        <input type="file" id="img" name="img" defaultValue={event?.banniere.guid}/>
+        <input type="file" id="img" name="img" />
       </div>
+      <button type="submit" className="formSubmit" >
+          valider
+        </button>
     </form>
   );
 };

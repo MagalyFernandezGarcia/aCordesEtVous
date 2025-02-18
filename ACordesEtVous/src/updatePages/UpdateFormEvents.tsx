@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import FormEvent from "../Container/Forms/FormEvent"
-import { Evenement } from "../Types/evenements";
+import { Evenement, EvenementPut } from "../Types/evenements";
 import { fetchCurrentUser } from "../Services/autServices";
 import { fetchEventById } from "../Services/getServices";
+import { uploadMedia } from "../Services/servicesAPI/uploadMedias";
+import { updateEvent } from "../Services/updateServices";
 
 
 const UpdateFormEvents =({podId} :{podId : number | undefined})=>{
@@ -33,9 +35,36 @@ const UpdateFormEvents =({podId} :{podId : number | undefined})=>{
         fetchData();
       }, []);
 
-      const handleSubmit =( e: React.FormEvent<HTMLFormElement>,
-        id: number)=>{
+      const handleSubmit = async( e: React.FormEvent<HTMLFormElement>,
+        id: number | undefined)=>{
             e.preventDefault();
+
+            const formData = new FormData(e.currentTarget);
+                    const uploadedFiles = formData.get("img") as File | null
+                    const uploadedImages = [];
+                          if (uploadedFiles && podId && event) {
+                            const uploadedImage = await uploadMedia(uploadedFiles, podId, event.title.rendered);
+                            uploadedImages.push(uploadedImage);
+                          }
+                    if(id){
+                          const data: EvenementPut = {
+                            id,
+                            title: {
+                              rendered: formData.get("nameWP")?.toString() ?? ""},
+                            
+                            nom_de_levenement: formData.get("eventName")?.toString(),
+                            date_de_l_evenement: formData.get("beginDate")?.toString(),
+                            date_de_fin :formData.get("endDate")?.toString(),
+                            heure_de_debut: formData.get("beginHour")?.toString(),
+                            heure_de_fin: formData.get("endHour")?.toString(),
+                            description:formData.get("description")?.toString(),
+                            banniere : uploadedImages[0].ID.toString()
+                      
+                          };
+                          
+                      
+                          updateEvent(id,data)
+                        }
 
 
       }
