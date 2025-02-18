@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const Guinguette = ({
   onSetCurrentPage,
-  onsetPodId
+  onsetPodId,
 }: {
   onSetCurrentPage: React.Dispatch<React.SetStateAction<string>>;
 
@@ -45,39 +45,61 @@ const Guinguette = ({
   }, []);
 
   const displaySchedule = schedules.map((schedule) => {
-
-    
     if (schedule.precision !== "A partir de") {
       return (
-        <>
-        <img src={schedule.image_de_lhoraire.guid} alt="horaire" className="scheduleImg" />
-        <h3 key={schedule.id} className="subTitle">
-          {schedule.precision}
-        </h3>
-        </>
-
+        <div key={schedule.id}>
+          <img
+            src={schedule.image_de_lhoraire.guid}
+            alt="horaire"
+            className="scheduleImg"
+          />
+          <div className="updateContainer">
+            <h3 className="subTitle">{schedule.precision}</h3>
+            {auth === "admin" && (
+              <Link
+                to="/updateSchedule"
+                onClick={() => onsetPodId(schedule.id)}
+              >
+                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+              </Link>
+            )}
+          </div>
+        </div>
       );
     } else if (schedule.jours === "Dimanche") {
       return (
         <div key={schedule.id} className=" scheduleContainer dimanche">
-          <div>
-          <Link to="/updateSchedule" onClick={() => onsetPodId(schedule.id)}>
-            <img src="/pen.svg" alt="update icon" className="updateIcon" />
-          </Link>
-          <p className="days">•     {schedule.jours}</p>
+          <div className="updateContainer">
+            <p className="days">• {schedule.jours}</p>
+            {auth === "admin" && (
+              <Link
+                to="/updateSchedule"
+                onClick={() => onsetPodId(schedule.id)}
+              >
+                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+              </Link>
+            )}
           </div>
-          
-          <p className="precision">  
-                {schedule.precision} {schedule.heure.slice(0, -3)}
+
+          <p className="precision">
+            {schedule.precision} {schedule.heure.slice(0, -3)}
           </p>
         </div>
-        
       );
     } else {
       return (
         <div key={schedule.id} className="scheduleContainer">
-            
-          <p className="days">•       {schedule.jours}</p>
+          <div className="updateContainer">
+            <p className="days">• {schedule.jours}</p>
+            {auth === "admin" && (
+              <Link
+                to="/updateSchedule"
+                onClick={() => onsetPodId(schedule.id)}
+              >
+                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+              </Link>
+            )}
+          </div>
           <p className="precision">
             {schedule.precision} {schedule.heure.slice(0, -3)}
           </p>
@@ -94,14 +116,14 @@ const Guinguette = ({
     return (
       <div key={packages.id} className="tarifContainer">
         <div>
-        <p>{packages.composition}</p>
-        {auth === "admin" && (
-          <Link to="/updatePackages" onClick={() => onsetPodId(packages.id)}>
-            <img src="/pen.svg" alt="update icon" className="updateIcon" />
-          </Link>
-        )}
+          <p>{packages.composition}</p>
+          {auth === "admin" && (
+            <Link to="/updatePackages" onClick={() => onsetPodId(packages.id)}>
+              <img src="/pen.svg" alt="update icon" className="updateIcon" />
+            </Link>
+          )}
         </div>
-        
+
         <p className="price">{packages.prix} €</p>
       </div>
     );
@@ -109,14 +131,14 @@ const Guinguette = ({
 
   return (
     <main className="guinguette">
-        <section className="section">
-      <h2 className="titleSchedule">Horaires d'ouverture</h2>
-      <div className="schedule">{displaySchedule}</div>
-      <p className="textSchedule">Privatisation sur demande</p>
+      <section className="section">
+        <h2 className="titleSchedule">Horaires d'ouverture</h2>
+        <div className="schedule">{displaySchedule}</div>
+        <p className="textSchedule">Privatisation sur demande</p>
       </section>
       <section className="section desktopOnly">
-      <h2 >Forfaits</h2>
-      <div className="schedule ">{displayPackage}</div>
+        <h2>Forfaits</h2>
+        <div className="schedule ">{displayPackage}</div>
       </section>
       <img src="/bar.jpg" alt="bar" className="barImg mobileOnly" />
     </main>

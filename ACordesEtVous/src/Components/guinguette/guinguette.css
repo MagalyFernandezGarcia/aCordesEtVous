@@ -67,13 +67,18 @@
     padding-top: 1rem;
 }
 
+.updateContainer{
+    display: flex;
+    gap: 1rem;
+}
+
 @media(max-width: 768px){
     .desktopOnly{
         display: none;
     }
 
     .mobileOnly{
-        display: block
+        display: flex
     }
     .guinguette{
         padding-top: 1rem;
@@ -101,6 +106,16 @@
     .barImg{
         width: 25rem;
         height: 27rem;
+    }
+
+    .scheduleImg{
+        width: 22rem;
+        order: 3;
+    }
+
+    .updateIcon{
+        padding-top: 0;
+        height: 1rem;
     }
 
 }

@@ -145,7 +145,14 @@ const DisplaysPage = ({
                       alt="exemple de disposition"
                     />
                   </button>
+                  <div>
+                  {auth === "admin" && (
+              <Link to="/updateDisplay" onClick={() => onsetPodId(display.id)}>
+                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+              </Link>
+            )}
                   <p className="displayName">{display.nom_de_lambiance}</p>
+                  </div>
                 </div>
               );
             })}
