@@ -72,3 +72,43 @@ export type Evenement = {
     }
   }
   
+
+  export type EvenementPut = {
+    id: number;
+    status?: string;
+    title?: {
+      rendered: string;
+    };
+    nom_de_levenement?: string;
+    date_de_l_evenement?: string;
+    date_de_fin?: string;
+    heure_de_debut?: string;
+    heure_de_fin?: string;
+    description?: string;
+    banniere?: {
+      ID: string;
+      guid: string;
+    };
+    _links?: {
+      self: Array<{
+        href: string
+        targetHints: {
+          allow: Array<string>
+        }
+      }>
+      collection: Array<{
+        href: string
+      }>
+      about: Array<{
+        href: string
+      }>
+      "wp:attachment": Array<{
+        href: string
+      }>
+      curies: Array<{
+        name: string
+        href: string
+        templated: boolean
+      }>
+    }
+  };

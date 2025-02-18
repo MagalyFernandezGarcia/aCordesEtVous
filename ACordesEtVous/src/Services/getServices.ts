@@ -31,3 +31,7 @@ export const fetchPackageById = (id: number) =>
 
 export const fetchScheduleById = (id: number) =>
 	fetchDatasFromWPById<Horaire>("horaires", id);
+
+
+export const fetchEventById = (id: number) =>
+	fetchDatasFromWPById<Evenement>("evenements", id);

@@ -17,6 +17,7 @@ import UpdateFormAmenagement from "./updatePages/UpdateFormAmenagement";
 import UpdateFormTarifs from "./updatePages/UpdateFormTarifs";
 import UpdateFormPackages from "./updatePages/UpdateFormPackages";
 import UpdateFormSchedule from "./updatePages/UpdateFormSchedule";
+import UpdateFormEvents from "./updatePages/UpdateFormEvents";
 
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
@@ -78,6 +79,7 @@ function App() {
 					/>
 					<Route path="/updatePackages" element={<UpdateFormPackages podId={podId} />} />
 					<Route path="/updateSchedule" element={<UpdateFormSchedule podId={podId} />} />
+					<Route path="/updateEvent" element={<UpdateFormEvents podId={podId} />} />
 				</Routes>
 			</section>
 			<section className="footer">

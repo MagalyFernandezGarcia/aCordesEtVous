@@ -8,6 +8,7 @@ import "./guinguette.css";
 import { Package } from "../../Types/package";
 import { fetchCurrentUser } from "../../Services/autServices";
 import { Link } from "react-router-dom";
+import React from "react";
 
 const Guinguette = ({
   onSetCurrentPage,
@@ -47,11 +48,12 @@ const Guinguette = ({
   const displaySchedule = schedules.map((schedule) => {
     if (schedule.precision !== "A partir de") {
       return (
-        <div key={schedule.id}>
+        <React.Fragment key={schedule.id}>
           <img
             src={schedule.image_de_lhoraire.guid}
             alt="horaire"
             className="scheduleImg"
+            
           />
           <div className="updateContainer">
             <h3 className="subTitle">{schedule.precision}</h3>
@@ -64,7 +66,7 @@ const Guinguette = ({
               </Link>
             )}
           </div>
-        </div>
+        </React.Fragment>
       );
     } else if (schedule.jours === "Dimanche") {
       return (
@@ -115,7 +117,7 @@ const Guinguette = ({
   const displayPackage = sortedPackage.map((packages) => {
     return (
       <div key={packages.id} className="tarifContainer">
-        <div>
+        <div className="updateContainer">
           <p>{packages.composition}</p>
           {auth === "admin" && (
             <Link to="/updatePackages" onClick={() => onsetPodId(packages.id)}>
