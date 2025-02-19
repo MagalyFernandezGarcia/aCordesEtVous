@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Tarifs } from "../../Types/tarifs";
 import { fetchPackageList, fetchTarifsList } from "../../Services/getServices";
 import { Package } from "../../Types/package";

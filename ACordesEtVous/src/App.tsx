@@ -13,7 +13,7 @@ import Contact from "./Components/contact/Contact";
 import TarifsPage from "./Components/tarifsPage/TarifsPage";
 import Login from "./Container/login/Login";
 
-import UpdateFormAmenagement from "./updatePages/UpdateFormAmenagement";
+import UpdateFormAmenagement from "./updatePages/amenagments/UpdateFormAmenagement";
 import UpdateFormTarifs from "./updatePages/UpdateFormTarifs";
 import UpdateFormPackages from "./updatePages/UpdateFormPackages";
 import UpdateFormSchedule from "./updatePages/UpdateFormSchedule";

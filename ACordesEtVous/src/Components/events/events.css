@@ -1,139 +1,128 @@
-.cardEvent{
-    display: flex;
-    flex-direction: column;
-    background-color: #f5decc;
-    height: fit-content;
-    
+.cardEvent {
+	display: flex;
+	flex-direction: column;
+	background-color: #f5decc;
+	height: fit-content;
 }
 
 .banniere {
-   
-  width: 26rem;
-  height: 20rem;
+	width: 26rem;
+	height: 20rem;
 }
 
 .titleEvent {
-  
-  text-align: center;
-  font-size: 1.5rem;
-  
-  text-shadow: 2px 2px 2px black;
+	text-align: center;
+	font-size: 1.5rem;
+
+	text-shadow: 2px 2px 2px black;
 }
 
-.infoEvent{
-    padding: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-
+.infoEvent {
+	padding: 0.5rem;
+	display: flex;
+	justify-content: space-between;
 }
-.descriptionEvent{
-    padding: 0.5rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    width: 25rem;
-}
-
-.eventsContainer{
-    display: flex;
-    justify-content: center;
-    
-    flex-wrap: wrap;
-    gap: 5rem;
+.descriptionEvent {
+	padding: 0.5rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	width: 25rem;
 }
 
-.eventsPage{
-    display: flex;
-    flex-direction: column;
-    
-    gap: 1rem;
-    padding-top: 3rem;
+.eventsContainer {
+	display: flex;
+	justify-content: center;
+
+	flex-wrap: wrap;
+	gap: 5rem;
 }
 
-.listChoices{
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding-bottom: 2rem;
+.eventsPage {
+	display: flex;
+	flex-direction: column;
+
+	gap: 1rem;
+	padding-top: 3rem;
 }
 
-.btnEvent{
-    background-color: #F8FCEE;
-    border: none;
-    color: #1F2421;
-    font-size: 1.5rem;
-    cursor: pointer;
+.listChoices {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	padding-bottom: 2rem;
 }
 
-.btnImg{
-    background-color: transparent;
-    border: none;
-    
-    cursor: pointer;
-
+.btnEvent {
+	background-color: #f8fcee;
+	border: none;
+	color: #1f2421;
+	font-size: 1.5rem;
+	cursor: pointer;
 }
 
-.nonActiveBtn{
-    color: gray;
+.btnImg {
+	background-color: transparent;
+	border: none;
+
+	cursor: pointer;
 }
 
-.eventsTitle{
-    text-align: center;
-    font-size: 2rem;
-    padding-bottom: 2rem;
+.nonActiveBtn {
+	color: gray;
 }
 
-.desktopOnly{
-    display: block;
+.eventsTitle {
+	text-align: center;
+	font-size: 2rem;
+	padding-bottom: 2rem;
 }
-.updateEventContainer{
-    display: flex;
-    justify-content: center;
-    position: relative;
 
-    
+.desktopOnly {
+	display: block;
 }
-.updateIcon{
-    position: absolute;
-    right: 5%;
+.updateEventContainer {
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+.updateIconEvent {
+	position: absolute;
+	width: 1.5rem;
+	right: 5%;
 }
 
 @media (max-width: 768px) {
-    .desktopOnly {
-      display: none;
-    }
-  
-    
+	.desktopOnly {
+		display: none;
+	}
 
-    .listChoices{
-        padding-bottom: 0%;
-        background-color: #96c326;
-        border-radius: 30px;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
+	.listChoices {
+		padding-bottom: 0%;
+		background-color: #96c326;
+		border-radius: 30px;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		gap: 1rem;
+		margin-bottom: 2rem;
+	}
 
-    .btnEvent{
-        
-        background-color: #96c326;
-        border-radius: 30px;
+	.btnEvent {
+		background-color: #96c326;
+		border-radius: 30px;
+	}
 
-        
-    }
+	.eventsPage {
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
 
-    .eventsPage{
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
-
-    .banniere{
-        width: 23rem;
-    }
-    .cardEvent{
-        width: 23rem;
-    }
-    .updateIcon{
-        top : 20%
-    }
-  }
+	.banniere {
+		width: 23rem;
+	}
+	.cardEvent {
+		width: 23rem;
+	}
+	.updateIconEvent {
+		top: 20%;
+	}
+}

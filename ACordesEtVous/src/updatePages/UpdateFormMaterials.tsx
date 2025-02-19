@@ -5,11 +5,13 @@ import { fetchCurrentUser } from "../Services/autServices";
 import FormMaterial from "../Container/Forms/FormMaterial";
 import { uploadMedia } from "../Services/servicesAPI/uploadMedias";
 import { updateMaterial } from "../Services/updateServices";
+import { useNavigate } from "react-router-dom";
 
 const UpdateFormMaterials = ({ podId }: { podId: number | undefined }) => {
 	const [material, setMaterial] = useState<Material>();
 
 	const [auth, setAuth] = useState("");
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -63,6 +65,7 @@ const UpdateFormMaterials = ({ podId }: { podId: number | undefined }) => {
 
 			updateMaterial(id, data);
 		}
+		navigate("/nosidees");
 	};
 
 	if (auth === "admin" && material) {
