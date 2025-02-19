@@ -18,10 +18,11 @@ import UpdateFormTarifs from "./updatePages/UpdateFormTarifs";
 import UpdateFormPackages from "./updatePages/UpdateFormPackages";
 import UpdateFormSchedule from "./updatePages/UpdateFormSchedule";
 import UpdateFormEvents from "./updatePages/UpdateFormEvents";
+import UpdateFormMaterials from "./updatePages/UpdateFormMaterials";
 
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
-	
+
 	const [podId, setPodId] = useState<number>();
 	return (
 		<section className="app">
@@ -39,7 +40,6 @@ function App() {
 						element={
 							<DisplaysPage
 								onSetCurrentPage={setCurrentPage}
-								
 								onsetPodId={setPodId}
 							/>
 						}
@@ -50,15 +50,27 @@ function App() {
 					/>
 					<Route
 						path="/guinguette"
-						element={<Guinguette onSetCurrentPage={setCurrentPage} onsetPodId={setPodId} />}
+						element={
+							<Guinguette
+								onSetCurrentPage={setCurrentPage}
+								onsetPodId={setPodId}
+							/>
+						}
 					/>
 					<Route
 						path="/evenements"
-						element={<Events onSetCurrentPage={setCurrentPage} onsetPodId={setPodId} />}
+						element={
+							<Events onSetCurrentPage={setCurrentPage} onsetPodId={setPodId} />
+						}
 					/>
 					<Route
 						path="/materiel"
-						element={<MaterialsLocation onSetCurrentPage={setCurrentPage} />}
+						element={
+							<MaterialsLocation
+								onSetCurrentPage={setCurrentPage}
+								onSetPodId={setPodId}
+							/>
+						}
 					/>
 					<Route
 						path="/contact"
@@ -68,18 +80,31 @@ function App() {
 						path="/tarifs"
 						element={<TarifsPage onSetCurrentPage={setCurrentPage} />}
 					/>
-					<Route path="/login" element={<Login  />} />
+					<Route path="/login" element={<Login />} />
 					<Route
 						path="/updateDisplay"
-						element={<UpdateFormAmenagement  podId={podId} />}
+						element={<UpdateFormAmenagement podId={podId} />}
 					/>
 					<Route
 						path="/updateTarifs"
-						element={<UpdateFormTarifs  podId={podId} />}
+						element={<UpdateFormTarifs podId={podId} />}
 					/>
-					<Route path="/updatePackages" element={<UpdateFormPackages podId={podId} />} />
-					<Route path="/updateSchedule" element={<UpdateFormSchedule podId={podId} />} />
-					<Route path="/updateEvent" element={<UpdateFormEvents podId={podId} />} />
+					<Route
+						path="/updatePackages"
+						element={<UpdateFormPackages podId={podId} />}
+					/>
+					<Route
+						path="/updateSchedule"
+						element={<UpdateFormSchedule podId={podId} />}
+					/>
+					<Route
+						path="/updateEvent"
+						element={<UpdateFormEvents podId={podId} />}
+					/>
+					<Route
+						path="/updateMaterial"
+						element={<UpdateFormMaterials podId={podId} />}
+					/>
 				</Routes>
 			</section>
 			<section className="footer">

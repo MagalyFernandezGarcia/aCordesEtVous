@@ -32,6 +32,8 @@ export const fetchPackageById = (id: number) =>
 export const fetchScheduleById = (id: number) =>
 	fetchDatasFromWPById<Horaire>("horaires", id);
 
-
 export const fetchEventById = (id: number) =>
 	fetchDatasFromWPById<Evenement>("evenements", id);
+
+export const fetchMaterialById = (id: number) =>
+	fetchDatasFromWPById<Material>("locations", id);
