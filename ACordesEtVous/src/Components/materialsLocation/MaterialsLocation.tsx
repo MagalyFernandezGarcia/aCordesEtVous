@@ -48,10 +48,11 @@ const MaterialsLocation = ({
 				/>
 				<div className="updateMaterialContainer">
 					<h2>{material.title.rendered}</h2>
-
-					<Link to="/updateMaterials" onClick={() => onSetPodId(material.id)}>
-						<img src="/pen.svg" alt="update icon" className="updateIcon" />
-					</Link>
+					{auth === "admin" && (
+						<Link to="/updateMaterials" onClick={() => onSetPodId(material.id)}>
+							<img src="/pen.svg" alt="update icon" className="updateIcon" />
+						</Link>
+					)}
 				</div>
 				<p className="materialDescription">{material.description}</p>
 				<div className="priceContainer">

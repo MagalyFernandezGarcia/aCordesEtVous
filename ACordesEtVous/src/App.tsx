@@ -78,7 +78,12 @@ function App() {
 					/>
 					<Route
 						path="/tarifs"
-						element={<TarifsPage onSetCurrentPage={setCurrentPage} />}
+						element={
+							<TarifsPage
+								onSetCurrentPage={setCurrentPage}
+								onSetPodId={setPodId}
+							/>
+						}
 					/>
 					<Route path="/login" element={<Login />} />
 					<Route

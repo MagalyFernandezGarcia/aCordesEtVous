@@ -1,19 +1,23 @@
-.tarifsContainer{
-    display: grid;
-    grid-template-columns: 1fr 0.5fr;
-    padding-top: 0.5rem;
-
+.tarifsContainer {
+	display: grid;
+	grid-template-columns: 1fr 0.5fr;
+	padding-top: 0.5rem;
 }
 
-.tarifPage{
-    padding-left: 2rem;
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    
-    gap: 2rem;
+.tarifPage {
+	padding-left: 2rem;
+	padding-top: 2rem;
+	display: flex;
+	flex-direction: column;
+
+	gap: 2rem;
 }
 
-.tarifPageTitle{
-    padding-bottom: 0.5rem;
+.tarifPageTitle {
+	padding-bottom: 0.5rem;
+}
+
+.updateTarifCOntainer {
+	display: flex;
+	align-items: center;
 }
