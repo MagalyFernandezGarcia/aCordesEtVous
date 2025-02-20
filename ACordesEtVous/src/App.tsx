@@ -20,6 +20,7 @@ import UpdateFormSchedule from "./updatePages/UpdateFormSchedule";
 import UpdateFormEvents from "./updatePages/UpdateFormEvents";
 import UpdateFormMaterials from "./updatePages/UpdateFormMaterials";
 
+
 function App() {
 	const [currentPage, setCurrentPage] = useState("");
 
@@ -110,6 +111,7 @@ function App() {
 						path="/updateMaterial"
 						element={<UpdateFormMaterials podId={podId} />}
 					/>
+					
 				</Routes>
 			</section>
 			<section className="footer">

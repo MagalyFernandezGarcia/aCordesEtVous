@@ -66,11 +66,14 @@ const DisplaysPage = ({
         <div key={display.id} className="galleryContainer">
           <div className="displayTitle">
             <h2>{display.nom_de_lambiance}</h2>
-            {auth === "admin" && (
+            
               <Link to="/updateDisplay" onClick={() => onsetPodId(display.id)}>
                 <img src="/pen.svg" alt="update icon" className="updateIcon" />
               </Link>
-            )}
+            
+            <Link to="/updateDisplay" onClick={() => onsetPodId(undefined)}>
+                <img src="/plus.svg" alt="plus icon" className="updateIcon" />
+              </Link>
           </div>
           <div className="gallery">
             {display.photos.map((photo) => {
@@ -151,6 +154,7 @@ const DisplaysPage = ({
                 <img src="/pen.svg" alt="update icon" className="updateIcon" />
               </Link>
             )}
+            
                   <p className="displayName">{display.nom_de_lambiance}</p>
                   </div>
                 </div>

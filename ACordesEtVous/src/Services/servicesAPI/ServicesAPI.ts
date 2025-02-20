@@ -83,3 +83,24 @@ export const deleteDatas = async (route: string, id: number) => {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}
 };
+
+export const createPod = async <T>(route: string,podData: T ) => {
+	const url = `http://${VITE_URL_WP}wp/v2/${route}`;
+	
+	
+	const response = await fetch(url, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			"X-WP-Nonce": (window as any).wpApiSettings?.nonce,
+		},
+		body: JSON.stringify(podData),
+		credentials: "include",
+	});
+	if (!response.ok) {
+		throw new Error("Failed to create pod");
+	  }
+	return await response.json()
+	
+
+}

@@ -28,7 +28,7 @@ export const uploadMedia = async (file: File, podId : number, displayTitle : str
   };
 
   const photoData = await response.json();
-  console.log("photoData", photoData);
+  
   
   const formattedPhoto = {
     ID: photoData.id.toString(),
