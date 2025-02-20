@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Package, PackagePut } from "../Types/package";
+import { Package, PackagePost, PackagePut } from "../Types/package";
 import { fetchCurrentUser } from "../Services/autServices";
 import { fetchPackageById } from "../Services/getServices";
 import FormPackages from "../Container/Forms/FormPackages";
 import { updatePackage } from "../Services/updateServices";
 import { useNavigate } from "react-router-dom";
+import { createPackage } from "../Services/postServices";
 
 const UpdateFormPackages = ({ podId }: { podId: number | undefined }) => {
 	const [auth, setAuth] = useState("");
@@ -14,12 +15,17 @@ const UpdateFormPackages = ({ podId }: { podId: number | undefined }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			let ignore = false;
+			const resultAuth = await fetchCurrentUser();
+			if (!ignore) {
+				
+				setAuth(resultAuth?.name ?? "");
+			}
+			
 			if (podId) {
 				const result = await fetchPackageById(podId);
-				const resultAuth = await fetchCurrentUser();
 				if (!ignore) {
 					setForfait(result);
-					setAuth(resultAuth?.name ?? "");
+					
 				}
 			}
 
@@ -29,7 +35,7 @@ const UpdateFormPackages = ({ podId }: { podId: number | undefined }) => {
 		};
 		fetchData();
 	}, []);
-	const handleSubmit = async (
+	const handleSubmitPut = async (
 		e: React.FormEvent<HTMLFormElement>,
 		id?: number
 	) => {
@@ -51,8 +57,29 @@ const UpdateFormPackages = ({ podId }: { podId: number | undefined }) => {
 		}
 		navigate("/nosidees");
 	};
+
+	const handleSubmitPost = async(e: React.FormEvent<HTMLFormElement>)=>{
+		e.preventDefault();
+	
+		const formData = new FormData(e.currentTarget);
+		const data: PackagePost = {
+			title:  formData.get("nameWP")?.toString() ?? "",
+			
+			composition: formData.get("composition")?.toString(),
+			duree: formData.get("duration")?.toString(),
+			prix: formData.get("price")?.toString(),
+			status: "publish"
+		};
+		createPackage(data);
+		navigate("/nosidees");
+	}
+
+
 	if (auth === "admin" && forfait) {
-		return <FormPackages forfait={forfait} onHandleSubmit={handleSubmit} />;
+		return <FormPackages forfait={forfait} onHandleSubmit={handleSubmitPut} />;
+	}
+	if(auth === "admin" && !forfait){
+		return <FormPackages  onHandleSubmit={handleSubmitPost} />
 	}
 };
 

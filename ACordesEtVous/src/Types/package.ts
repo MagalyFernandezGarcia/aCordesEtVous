@@ -77,3 +77,16 @@ export type Package = {
       }>;
     };
   }
+
+ 
+    
+    
+    export type PackagePost = {
+      title: string;
+      composition?: string;
+      duree?: string;
+      prix?: string;
+      status: string
+  };
+    
+  

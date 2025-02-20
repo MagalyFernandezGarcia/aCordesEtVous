@@ -199,7 +199,11 @@ const DisplaysPage = ({
             </button>
           </h2>
           <div className="containerTarifs">{tarifsList}</div>
-          <h2 className="titleTarifs">Forfaits</h2>
+          <h2 className="titleTarifs">Forfaits <button className="linkBtn">
+              <Link to="/updatePackages" onClick={() => onsetPodId(undefined)}>
+                <img src="/plus.svg" alt="plus icon" className="addIcon" />
+              </Link>
+            </button></h2>
           <div className="containerTarifs">{packagesList}</div>
         </section>
       </section>
