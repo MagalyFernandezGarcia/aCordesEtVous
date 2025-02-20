@@ -53,17 +53,23 @@ const Guinguette = ({
             src={schedule.image_de_lhoraire.guid}
             alt="horaire"
             className="scheduleImg"
-            
           />
           <div className="updateContainer">
             <h3 className="subTitle">{schedule.precision}</h3>
             {auth === "admin" && (
-              <Link
-                to="/updateSchedule"
-                onClick={() => onsetPodId(schedule.id)}
-              >
-                <img src="/pen.svg" alt="update icon" className="updateIcon" />
-              </Link>
+              <button className="linkBtn">
+                
+                <Link
+                  to="/updateSchedule"
+                  onClick={() => onsetPodId(schedule.id)}
+                >
+                  <img
+                    src="/pen.svg"
+                    alt="update icon"
+                    className="updateIcon"
+                  />
+                </Link>
+              </button>
             )}
           </div>
         </React.Fragment>
@@ -74,12 +80,18 @@ const Guinguette = ({
           <div className="updateContainer">
             <p className="days">• {schedule.jours}</p>
             {auth === "admin" && (
-              <Link
-                to="/updateSchedule"
-                onClick={() => onsetPodId(schedule.id)}
-              >
-                <img src="/pen.svg" alt="update icon" className="updateIcon" />
-              </Link>
+              <button className="linkBtn">
+                <Link
+                  to="/updateSchedule"
+                  onClick={() => onsetPodId(schedule.id)}
+                >
+                  <img
+                    src="/pen.svg"
+                    alt="update icon"
+                    className="updateIcon"
+                  />
+                </Link>
+              </button>
             )}
           </div>
 
@@ -94,12 +106,19 @@ const Guinguette = ({
           <div className="updateContainer">
             <p className="days">• {schedule.jours}</p>
             {auth === "admin" && (
-              <Link
-                to="/updateSchedule"
-                onClick={() => onsetPodId(schedule.id)}
-              >
-                <img src="/pen.svg" alt="update icon" className="updateIcon" />
-              </Link>
+              <button className="linkBtn">
+                
+                <Link
+                  to="/updateSchedule"
+                  onClick={() => onsetPodId(schedule.id)}
+                >
+                  <img
+                    src="/pen.svg"
+                    alt="update icon"
+                    className="updateIcon"
+                  />
+                </Link>
+              </button>
             )}
           </div>
           <p className="precision">
@@ -120,9 +139,14 @@ const Guinguette = ({
         <div className="updateContainer">
           <p>{packages.composition}</p>
           {auth === "admin" && (
-            <Link to="/updatePackages" onClick={() => onsetPodId(packages.id)}>
-              <img src="/pen.svg" alt="update icon" className="updateIcon" />
-            </Link>
+            <button className="linkBtn">
+              <Link
+                to="/updatePackages"
+                onClick={() => onsetPodId(packages.id)}
+              >
+                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+              </Link>
+            </button>
           )}
         </div>
 
@@ -134,7 +158,14 @@ const Guinguette = ({
   return (
     <main className="guinguette">
       <section className="section">
-        <h2 className="titleSchedule">Horaires d'ouverture</h2>
+        <h2 className="titleSchedule">
+          Horaires d'ouverture{" "}
+          <button className="linkBtn">
+            <Link to="/updateSchedule" onClick={() => onsetPodId(undefined)}>
+              <img src="/plus.svg" alt="update icon" className="addIcon" />
+            </Link>
+          </button>
+        </h2>
         <div className="schedule">{displaySchedule}</div>
         <p className="textSchedule">Privatisation sur demande</p>
       </section>

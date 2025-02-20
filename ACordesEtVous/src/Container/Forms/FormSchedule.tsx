@@ -6,13 +6,15 @@ const FormSchedule = ({
   schedule,
   onHandleSubmit,
   podId,
+  onRemovePhoto,
 }: {
   schedule?: Horaire;
   onHandleSubmit: (
     e: React.FormEvent<HTMLFormElement>,
     id: number | undefined
   ) => void;
-  podId: number | undefined;
+  podId?: number | undefined;
+  onRemovePhoto?: (id: string) => void;
 }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -33,21 +35,29 @@ const FormSchedule = ({
           type="text"
           id="nameWP"
           name="nameWP"
-          defaultValue={schedule?.title.rendered}
+          {...schedule && { defaultValue: schedule.title.rendered }}
+         
         />
       </div>
       <div>
         <label htmlFor="days">Jours : </label>
-        <input type="text" id="days" name="days" />
+        <input type="text" id="days" name="days" {...schedule && { defaultValue: schedule.jours }} />
       </div>
       <div>
         <label htmlFor="hours">Heure : </label>
-        <input type="text" id="hours" name="hours" />
+        <input type="time" id="hours" name="hours" {...schedule && { defaultValue: schedule.heure }} />
       </div>
       <div>
         <label htmlFor="precision">Précision : </label>
-        <input type="text" name="precision" id="precision" />
+        <input type="text" name="precision" id="precision" {...schedule && { defaultValue: schedule.precision }} />
       </div>
+      {schedule && <div><img src={schedule.image_de_lhoraire?.guid} className="photo" alt="horaire" /><span
+              className="deletePhoto"
+			  { ...(onRemovePhoto && { onClick: () => onRemovePhoto(schedule.image_de_lhoraire.ID) }) }
+              
+            >
+              &times;
+            </span></div>}
       <div>
         <label htmlFor="scheduleImg">Ajouter une image</label>
         <input

@@ -14,7 +14,7 @@ import { deletePhoto } from "../../Services/deleteService";
 import { useNavigate } from "react-router";
 import FormDisplay from "../../Container/Forms/FormDisplay";
 import { createDisplay } from "../../Services/postServices";
-import { updateDatas } from "../../Services/servicesAPI/ServicesAPI";
+
 
 const UpdateFormAmenagement = ({ podId }: { podId: number | undefined }) => {
   const [display, setDisplay] = useState<Amenagement>();
@@ -104,7 +104,7 @@ const UpdateFormAmenagement = ({ podId }: { podId: number | undefined }) => {
       title: formData.get("wpTitle")?.toString() ?? "",
       nom_de_lambiance: formData.get("podTitle")?.toString() ?? "",
       content: "",
-      photos: [],
+      
       status: "publish",
     };
 
@@ -125,7 +125,7 @@ const UpdateFormAmenagement = ({ podId }: { podId: number | undefined }) => {
         photos: uploadedImages.map((photo) => photo.ID),
       };
 
-      await updateDatas("amenagements", pod.id, updatedPodData);
+      await updateDisplay( pod.id, updatedPodData);
     }
 
     navigate("/nosidees");

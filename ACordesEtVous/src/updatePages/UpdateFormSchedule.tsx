@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import FormSchedule from "../Container/Forms/FormSchedule";
-import { Horaire, HorairePut } from "../Types/horaires";
+import { Horaire, HorairePost, HorairePut } from "../Types/horaires";
 import { fetchScheduleById } from "../Services/getServices";
 import { fetchCurrentUser } from "../Services/autServices";
 import { updateSchedule } from "../Services/updateServices";
 import { uploadMedia } from "../Services/servicesAPI/uploadMedias";
 import { useNavigate } from "react-router-dom";
+import { createSchedule } from "../Services/postServices";
+import { Photo } from "../Types/pods";
+import { deletePhoto } from "../Services/deleteService";
 
 const UpdateFormSchedule = ({ podId }: { podId: number | undefined }) => {
 	const [auth, setAuth] = useState("");
@@ -15,12 +18,16 @@ const UpdateFormSchedule = ({ podId }: { podId: number | undefined }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			let ignore = false;
+			const resultAuth = await fetchCurrentUser();
+			if (!ignore) {
+				
+				setAuth(resultAuth?.name ?? "");
+			}
 			if (podId) {
 				const result = await fetchScheduleById(podId);
-				const resultAuth = await fetchCurrentUser();
 				if (!ignore) {
 					setSchedule(result);
-					setAuth(resultAuth?.name ?? "");
+					
 				}
 			}
 
@@ -31,15 +38,17 @@ const UpdateFormSchedule = ({ podId }: { podId: number | undefined }) => {
 		fetchData();
 	}, []);
 
-	const handleSubmit = async (
+	const handleSubmitPut = async (
 		e: React.FormEvent<HTMLFormElement>,
 		id?: number
 	) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
+	
+		
 		const uploadedFiles = formData.get("scheduleImg") as File | null;
 		const uploadedImages = [];
-		if (uploadedFiles && podId && schedule) {
+		if ( uploadedFiles && uploadedFiles.size > 0 && podId && schedule) {
 			const uploadedImage = await uploadMedia(
 				uploadedFiles,
 				podId,
@@ -57,22 +66,79 @@ const UpdateFormSchedule = ({ podId }: { podId: number | undefined }) => {
 				jours: formData.get("days")?.toString(),
 				heure: formData.get("hours")?.toString(),
 				precision: formData.get("precision")?.toString(),
-				image_de_lhoraire: uploadedImages[0].ID.toString(),
+				
 			};
+			if (uploadedImages.length > 0) {
+				data.image_de_lhoraire = uploadedImages[0].ID.toString();
+			}
 
-			updateSchedule(id, data);
+			await updateSchedule(id, data);
 		}
-		navigate("/nosidees");
+		navigate("/guinguette");
 	};
-	if (auth && schedule) {
+
+	const handleSubmitPost = async(e: React.FormEvent<HTMLFormElement>)=>{
+		e.preventDefault();
+		const formData = new FormData(e.currentTarget);
+		const podData : HorairePost = {
+			title: formData.get("nameWP")?.toString() ?? "",
+			jours: formData.get("days")?.toString() ?? "",
+			heure: formData.get("hours")?.toString() ?? "",
+			precision: formData.get("precision")?.toString(),
+			status: "publish"
+		};
+		const pod = await createSchedule(podData);
+		
+		
+		 const uploadedFile = formData.get("scheduleImg") as File;
+		
+			if (uploadedFile.size> 0) {
+			  const uploadedImages = await uploadMedia(uploadedFile, pod.id, pod.title.rendered)
+				
+			
+		
+			  const updatedPodData = {
+				...pod,
+				image_de_lhoraire: uploadedImages.ID,
+			  };
+		
+			  await updateSchedule( pod.id, updatedPodData);
+			}
+		
+		navigate("/guinguette");
+		
+	}
+
+ const removePhoto = (photoId: string) => {
+	if (schedule) {
+	  const updatedPhotos: Photo = schedule.image_de_lhoraire
+	  ;
+	  setSchedule({ ...schedule, image_de_lhoraire: updatedPhotos });
+	}
+	deletePhoto(parseInt(photoId));
+  };
+
+
+	if (auth ==="admin" && schedule) {
 		return (
 			<FormSchedule
 				schedule={schedule}
-				onHandleSubmit={handleSubmit}
+				onHandleSubmit={handleSubmitPut}
 				podId={podId}
+				onRemovePhoto={removePhoto}
 			/>
 		);
 	}
+	if (auth ==="admin" && !schedule) {
+		return (
+			<FormSchedule
+				
+				onHandleSubmit={handleSubmitPost}
+				
+			/>
+		);
+	}
+	
 };
 
 export default UpdateFormSchedule;

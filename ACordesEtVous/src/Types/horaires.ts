@@ -106,3 +106,12 @@ export type Horaire = {
       }>
     }
   };
+  export type HorairePost = {
+    title: string;
+    jours: string;
+    heure: string;
+    precision?: string;
+    image_de_lhoraire?: Photo; 
+    
+    status: string
+};
