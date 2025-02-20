@@ -66,14 +66,13 @@ const DisplaysPage = ({
         <div key={display.id} className="galleryContainer">
           <div className="displayTitle">
             <h2>{display.nom_de_lambiance}</h2>
-            
+
+            {auth === "admin" && (
+            <button className="linkBtn">
               <Link to="/updateDisplay" onClick={() => onsetPodId(display.id)}>
                 <img src="/pen.svg" alt="update icon" className="updateIcon" />
               </Link>
-            
-            <Link to="/updateDisplay" onClick={() => onsetPodId(undefined)}>
-                <img src="/plus.svg" alt="plus icon" className="updateIcon" />
-              </Link>
+            </button>)}
           </div>
           <div className="gallery">
             {display.photos.map((photo) => {
@@ -95,12 +94,14 @@ const DisplaysPage = ({
     return (
       <div key={tarif.id} className="tarifContainer">
         <div className="titlePen">
-        {auth === "admin" && (
-          <Link to="/updateTarifs" onClick={() => onsetPodId(tarif.id)}>
-            <img src="/pen.svg" alt="update icon" className="updateIcon" />
-          </Link>
-        )}
-        <p>{tarif.tarif_duree}</p>
+          {auth === "admin" && (
+            <button className="linkBtn">
+              <Link to="/updateTarifs" onClick={() => onsetPodId(tarif.id)}>
+                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+              </Link>
+            </button>
+          )}
+          <p>{tarif.tarif_duree}</p>
         </div>
         <p className="price">{tarif.prix} €</p>
       </div>
@@ -111,14 +112,16 @@ const DisplaysPage = ({
     return (
       <div key={forfait.id} className="tarifContainer">
         <div className="titlePen">
-        {auth === "admin" && (
-          <Link to="/updatePackages" onClick={() => onsetPodId(forfait.id)}>
-            <img src="/pen.svg" alt="update icon" className="updateIcon" />
-          </Link>
-        )}
-        <p>
-          {forfait.composition} ({forfait.duree})
-        </p>
+          {auth === "admin" && (
+            <button className="linkBtn">
+              <Link to="/updatePackages" onClick={() => onsetPodId(forfait.id)}>
+                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+              </Link>
+            </button>
+          )}
+          <p>
+            {forfait.composition} ({forfait.duree})
+          </p>
         </div>
         <p className="price">{forfait.prix} €</p>
       </div>
@@ -132,7 +135,15 @@ const DisplaysPage = ({
 
   return (
     <main className="displaysPage">
-      <h1 className="titleDisplays desktopOnly"> Salle</h1>
+      <h1 className="titleDisplays desktopOnly">
+        {" "}
+        Salle{" "}
+        <button className="linkBtn">
+          <Link to="/updateDisplay" onClick={() => onsetPodId(undefined)}>
+            <img src="/plus.svg" alt="plus icon" className="addIcon" />
+          </Link>
+        </button>
+      </h1>
       <p className="text mobileOnly">La salle qui s'adapte à vos envies</p>
       <section className="content">
         <section className="leftSide">
@@ -149,13 +160,22 @@ const DisplaysPage = ({
                     />
                   </button>
                   <div>
-                  {auth === "admin" && (
-              <Link to="/updateDisplay" onClick={() => onsetPodId(display.id)}>
-                <img src="/pen.svg" alt="update icon" className="updateIcon" />
-              </Link>
-            )}
-            
-                  <p className="displayName">{display.nom_de_lambiance}</p>
+                    {auth === "admin" && (
+                      <button className="linkBtn">
+                        <Link
+                          to="/updateDisplay"
+                          onClick={() => onsetPodId(display.id)}
+                        >
+                          <img
+                            src="/pen.svg"
+                            alt="update icon"
+                            className="updateIcon"
+                          />
+                        </Link>
+                      </button>
+                    )}
+
+                    <p className="displayName">{display.nom_de_lambiance}</p>
                   </div>
                 </div>
               );
@@ -170,7 +190,14 @@ const DisplaysPage = ({
           )}
         </section>
         <section className="rightSide desktopOnly">
-          <h2 className="titleTarifs ">Tarifs</h2>
+          <h2 className="titleTarifs ">
+            Tarifs{" "}
+            <button className="linkBtn">
+              <Link to="/updateTarifs" onClick={() => onsetPodId(undefined)}>
+                <img src="/plus.svg" alt="update icon" className="addIcon" />
+              </Link>
+            </button>
+          </h2>
           <div className="containerTarifs">{tarifsList}</div>
           <h2 className="titleTarifs">Forfaits</h2>
           <div className="containerTarifs">{packagesList}</div>

@@ -109,6 +109,16 @@
 	display: flex;
 	gap: 1rem;
 }
+.addIcon{
+	width: 1.25rem;
+	
+}
+
+.linkBtn{
+	border: none;
+	background-color: transparent;
+	margin-left: 1rem;
+}
 
 @media (max-width: 768px) {
 	.desktopOnly {
