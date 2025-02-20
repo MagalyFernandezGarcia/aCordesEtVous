@@ -74,7 +74,13 @@ const Events = ({
 
 	return (
 		<main className="eventsPage">
-			<h1 className="eventsTitle desktopOnly">Evènements</h1>
+			<h1 className="eventsTitle desktopOnly">Evènements <button className="linkBtn"><Link to="/updateEvent" onClick={() => onsetPodId(undefined)}>
+									<img
+										src="/plus.svg"
+										alt="plus icon"
+										className="addIcon"
+									/>
+								</Link></button></h1>
 			{openModal && (
 				<ModalEvent imgEvent={imageEvent} onOpenModal={setOpenModal} />
 			)}
@@ -161,13 +167,13 @@ const DisplayEvents = ({
 						<div className="updateEventContainer">
 							<p className="titleEvent">{event.nom_de_levenement}</p>
 							{auth === "admin" && (
-								<Link to="/updateEvent" onClick={() => onSetPodId(event.id)}>
+								<button className="linkBtn"><Link to="/updateEvent" onClick={() => onSetPodId(event.id)}>
 									<img
 										src="/pen.svg"
 										alt="update icon"
 										className="updateIconEvent"
 									/>
-								</Link>
+								</Link></button>
 							)}
 						</div>
 

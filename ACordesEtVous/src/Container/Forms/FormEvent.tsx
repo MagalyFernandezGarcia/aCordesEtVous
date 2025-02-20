@@ -3,12 +3,14 @@ import { Evenement } from "../../Types/evenements";
 const FormEvent = ({
 	event,
 	onHandleSubmit,
+	onRemovePhoto
 }: {
 	event?: Evenement;
 	onHandleSubmit: (
 		e: React.FormEvent<HTMLFormElement>,
 		id: number | undefined
 	) => void;
+	onRemovePhoto?: (id: string) => void;
 }) => {
 	return (
 		<form className="form" onSubmit={(e) => onHandleSubmit(e, event?.id)}>
@@ -21,7 +23,7 @@ const FormEvent = ({
 					type="text"
 					id="nameWP"
 					name="nameWP"
-					defaultValue={event?.title.rendered}
+					{...event && { defaultValue: event.title.rendered }}
 				/>
 			</div>
 			<div>
@@ -30,7 +32,7 @@ const FormEvent = ({
 					type="text"
 					id="eventName"
 					name="eventName"
-					defaultValue={event?.nom_de_levenement}
+					{...event && { defaultValue: event.nom_de_levenement}}
 				/>
 			</div>
 			<div>
@@ -39,7 +41,7 @@ const FormEvent = ({
 					type="date"
 					id="beginDate"
 					name="beginDate"
-					defaultValue={event?.date_de_l_evenement}
+					{...event && { defaultValue: event.date_de_l_evenement}}
 				/>
 			</div>
 			<div>
@@ -48,7 +50,7 @@ const FormEvent = ({
 					type="date"
 					id="endDate"
 					name="endDate"
-					defaultValue={event?.date_de_fin}
+					{...event && { defaultValue: event.date_de_fin}}
 				/>
 			</div>
 			<div>
@@ -57,7 +59,7 @@ const FormEvent = ({
 					type="time"
 					id="beginHour"
 					name="beginHour"
-					defaultValue={event?.heure_de_debut}
+					{...event && { defaultValue: event.heure_de_debut}}
 				/>
 			</div>
 			<div>
@@ -66,7 +68,7 @@ const FormEvent = ({
 					type="time"
 					id="endHour"
 					name="endHour"
-					defaultValue={event?.heure_de_fin}
+					{...event && { defaultValue: event.heure_de_fin}}
 				/>
 			</div>
 			<div>
@@ -74,9 +76,27 @@ const FormEvent = ({
 				<textarea
 					id="description"
 					name="description"
-					defaultValue={event?.description}
+					{...event && { defaultValue: event.description}}
 				></textarea>
 			</div>
+			{event &&
+          <div>
+            <img
+              
+              src={event.banniere.guid}
+              alt="affiche"
+              className="photo"
+            />
+            <span
+              className="deletePhoto"
+			  { ...(onRemovePhoto && { onClick: () => onRemovePhoto(event.banniere.ID) }) }
+              
+            >
+              &times;
+            </span>
+          </div>
+        
+      }
 			<div>
 				<label htmlFor="img">Image : </label>
 				<input type="file" id="img" name="img" />

@@ -112,3 +112,15 @@ export type Evenement = {
       }>
     }
   };
+
+  export type EvenementPost = {
+    title: string;
+    nom_de_levenement: string;
+    date_de_l_evenement?: string;
+    date_de_fin?: string;
+    heure_de_debut?: string;
+    heure_de_fin?: string;
+    description: string;
+    status: string
+  };
+  

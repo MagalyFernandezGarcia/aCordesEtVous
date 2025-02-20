@@ -1,4 +1,5 @@
 import { AmenagementPost } from "../Types/amenagements";
+import { EvenementPost } from "../Types/evenements";
 import {  HorairePost } from "../Types/horaires";
 import { PackagePost } from "../Types/package";
 import { TarifsPost } from "../Types/tarifs";
@@ -20,7 +21,11 @@ export const createPackage = (data: PackagePost) => {
 }
 
 export const createSchedule = (data : HorairePost) =>{
-	console.log("pod in createSxhedule", data);
+	
 	
 	return createDatas<HorairePost>("horaires", data);
+}
+
+export const createEvent = (data: EvenementPost) => {
+	return createDatas<EvenementPost>("evenements", data);
 }

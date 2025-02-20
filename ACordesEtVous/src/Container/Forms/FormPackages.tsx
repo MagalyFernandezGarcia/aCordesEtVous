@@ -8,20 +8,20 @@ const FormPackages = ({forfait, onHandleSubmit } : {forfait? : Package, onHandle
             <h1 className="formTitle">{forfait? "Modifier le forfait" : "Ajouter un forfait"}</h1>
             <div>
                 <label htmlFor="nameWP"> Titre pour WordPress : </label>
-                <input type="text" id="nameWP" name="nameWP" defaultValue={forfait?.title.rendered} />
+                <input type="text" id="nameWP" name="nameWP" {...forfait && { defaultValue: forfait.title.rendered }} />
             </div>
             <div>
                 <label htmlFor="composition"> Composition : </label>
-                <input type="text" id="composition" name="composition" defaultValue={forfait?.composition} />
+                <input type="text" id="composition" name="composition" {...forfait && { defaultValue: forfait.composition}} />
             </div>
 
             <div>
                 <label htmlFor="duration"> Durée : </label>
-                <input type="text" id="duration" name="duration" defaultValue={forfait?.duree} />
+                <input type="text" id="duration" name="duration" {...forfait && { defaultValue: forfait.duree }} />
             </div>
             <div>
                 <label htmlFor="price"> Prix : </label>
-                <input type="number" id="price" name="price" defaultValue={forfait?.prix} />
+                <input type="number" id="price" name="price" {...forfait && { defaultValue: forfait.prix }} />
             </div>
 
             <button type="submit" className="formSubmit" >

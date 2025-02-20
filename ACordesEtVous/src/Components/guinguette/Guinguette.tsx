@@ -160,17 +160,22 @@ const Guinguette = ({
       <section className="section">
         <h2 className="titleSchedule">
           Horaires d'ouverture{" "}
-          <button className="linkBtn">
+            {auth === "admin" && <button className="linkBtn">
             <Link to="/updateSchedule" onClick={() => onsetPodId(undefined)}>
               <img src="/plus.svg" alt="update icon" className="addIcon" />
             </Link>
-          </button>
+          </button>}
+          
         </h2>
         <div className="schedule">{displaySchedule}</div>
         <p className="textSchedule">Privatisation sur demande</p>
       </section>
       <section className="section desktopOnly">
-        <h2>Forfaits</h2>
+        <h2>Forfaits <button className="linkBtn">
+            <Link to="/updatePackages" onClick={() => onsetPodId(undefined)}>
+              <img src="/plus.svg" alt="update icon" className="addIcon" />
+            </Link>
+          </button></h2>
         <div className="schedule ">{displayPackage}</div>
       </section>
       <img src="/bar.jpg" alt="bar" className="barImg mobileOnly" />
