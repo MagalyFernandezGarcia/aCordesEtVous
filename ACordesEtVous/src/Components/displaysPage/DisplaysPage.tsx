@@ -191,10 +191,10 @@ const DisplaysPage = ({
         </section>
         <section className="rightSide desktopOnly">
           <h2 className="titleTarifs ">
-            Tarifs{" "}
+            Tarifs
             <button className="linkBtn">
               <Link to="/updateTarifs" onClick={() => onsetPodId(undefined)}>
-                <img src="/plus.svg" alt="update icon" className="addIcon" />
+                <img src="/plus.svg" alt="plus icon" className="addIcon" />
               </Link>
             </button>
           </h2>

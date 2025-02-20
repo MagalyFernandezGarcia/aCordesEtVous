@@ -26,7 +26,7 @@ export async function LoginUser(
 
 
 export async function fetchCurrentUser(): Promise<{id: number; name: string} | null> {
-    try {
+    
       const { wpApiSettings } = window as any;
       if (!wpApiSettings?.root) {
         console.error('wpApiSettings.root est introuvable.');
@@ -47,9 +47,10 @@ export async function fetchCurrentUser(): Promise<{id: number; name: string} | n
   
       const data = await resp.json();
       
+      
+      
       return { id: data.id, name: data.name };
-    } catch (err) {
-      console.error('Erreur fetchCurrentUser:', err);
-      return null;
-    }
+    
+      
+    
   }

@@ -26,10 +26,13 @@ const UpdateFormAmenagement = ({ podId }: { podId: number | undefined }) => {
   useEffect(() => {
     const fetchData = async () => {
       let ignore = false;
+      const resultAuth = await fetchCurrentUser();
+      if (!ignore) {
+        setAuth(resultAuth?.name ?? "");
+      }
       if (podId) {
         const result = await fetchDisplayById(podId);
-        const resultAuth = await fetchCurrentUser();
-        setAuth(resultAuth?.name ?? "");
+        
         if (!ignore) {
           setDisplay(result);
         }
@@ -137,6 +140,16 @@ const UpdateFormAmenagement = ({ podId }: { podId: number | undefined }) => {
     }
     deletePhoto(parseInt(photoId));
   };
+  if ( display === undefined) {
+    {
+      return (
+        <FormDisplay
+          onHandleFileChange={handleFileChange}
+          onHandleSubmit={handleSubmitPost}
+        />
+      );
+    }
+  }
 
   if (auth === "admin" && display) {
     return (
@@ -149,16 +162,7 @@ const UpdateFormAmenagement = ({ podId }: { podId: number | undefined }) => {
     );
   }
 
-  if ( auth === "admin" && display === undefined) {
-    {
-      return (
-        <FormDisplay
-          onHandleFileChange={handleFileChange}
-          onHandleSubmit={handleSubmitPost}
-        />
-      );
-    }
-  }
+ 
 };
 
 export default UpdateFormAmenagement;
