@@ -45,27 +45,6 @@ export const updateDatas = async <T>(route: string, id: number, data: T) => {
 	
 };
 
-export const createDatas = async <T>(route: string, data: T) => {
-	const url = `http://${VITE_URL_WP}wp/v2/${route}`;
-	
-	
-	
-
-	const response = await fetch(url, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			"X-WP-Nonce": (window as any).wpApiSettings?.nonce,
-		},
-		body: JSON.stringify(data),
-		credentials: "include",
-	});
-
-	if (!response.ok) {
-		throw new Error(`Error: ${response.status} ${response.statusText}`);
-	}
-	
-};
 
 export const deleteDatas = async (route: string, id: number) => {
 	const url = `http://${VITE_URL_WP}wp/v2/${route}/${id}?force=true`;
@@ -84,7 +63,7 @@ export const deleteDatas = async (route: string, id: number) => {
 	}
 };
 
-export const createPod = async <T>(route: string,podData: T ) => {
+export const createDatas= async <T>(route: string,podData: T ) => {
 	const url = `http://${VITE_URL_WP}wp/v2/${route}`;
 	
 	

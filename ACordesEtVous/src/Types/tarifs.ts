@@ -87,3 +87,10 @@ export type Tarifs= {
     };
   };
   
+
+  export type TarifsPost = {
+    title: string; 
+    status: string; 
+    tarif_duree: string; 
+    prix: string; 
+  };

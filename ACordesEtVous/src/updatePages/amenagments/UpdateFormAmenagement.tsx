@@ -13,7 +13,7 @@ import { Photo } from "../../Types/pods";
 import { deletePhoto } from "../../Services/deleteService";
 import { useNavigate } from "react-router";
 import FormDisplay from "../../Container/Forms/FormDisplay";
-import { createPodDisplay } from "../../Services/postServices";
+import { createDisplay } from "../../Services/postServices";
 import { updateDatas } from "../../Services/servicesAPI/ServicesAPI";
 
 const UpdateFormAmenagement = ({ podId }: { podId: number | undefined }) => {
@@ -105,7 +105,7 @@ const UpdateFormAmenagement = ({ podId }: { podId: number | undefined }) => {
       status: "publish",
     };
 
-    const pod = await createPodDisplay(podData);
+    const pod = await createDisplay(podData);
     
 
     const uploadedFiles = formData.getAll("photos") as File[];
@@ -149,7 +149,7 @@ const UpdateFormAmenagement = ({ podId }: { podId: number | undefined }) => {
     );
   }
 
-  if (display === undefined) {
+  if ( auth === "admin" && display === undefined) {
     {
       return (
         <FormDisplay

@@ -58,6 +58,10 @@ const UpdateFormTarifs = ({ podId }: { podId: number | undefined }) => {
 		return <FormTarifs tarif={tarif} onHandleSubmit={handleSubmit} />;
 	}
 
+	if (!tarif) {
+		return <FormTarifs  onHandleSubmit={handleSubmit} />;
+	}
+
 	return <div>oups</div>;
 };
 
