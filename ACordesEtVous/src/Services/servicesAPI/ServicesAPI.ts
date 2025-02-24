@@ -1,6 +1,10 @@
 
 
+
+
 const { VITE_URL_WP } = import.meta.env;
+
+
 
 
 
@@ -61,6 +65,9 @@ export const deleteDatas = async (route: string, id: number) => {
 	if (!response.ok) {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}
+
+	
+	
 };
 
 export const createDatas= async <T>(route: string,podData: T ) => {

@@ -15,6 +15,9 @@ import {
 import { Link } from "react-router-dom";
 import { fetchCurrentUser } from "../../Services/autServices";
 
+import { deleteDisplay, deletePackage, deleteTarif } from "../../Services/deleteService";
+import DeleteModal from "../../Container/DeleteModal/DeleteModal";
+
 const DisplaysPage = ({
   onSetCurrentPage,
 
@@ -30,6 +33,7 @@ const DisplaysPage = ({
   const [openModal, setOpenModal] = useState(false);
   const [galleryId, setGalleryId] = useState(0);
   const [auth, setAuth] = useState("");
+  const [modalDelete, setModalDelete] = useState(false);
 
   useEffect(() => {
     onSetCurrentPage("Quelques idées");
@@ -54,7 +58,7 @@ const DisplaysPage = ({
     };
 
     fetchData();
-  }, []);
+  }, [modalDelete]);
 
   const sortedPackage = packages.filter((packages) =>
     packages.composition.includes("bar")
@@ -63,16 +67,26 @@ const DisplaysPage = ({
   const amenagements = displays.map((display) => {
     if (display)
       return (
+    
+    
         <div key={display.id} className="galleryContainer">
+          {modalDelete && (<DeleteModal onDelete={() => deleteDisplay(display.id)}  onModalDelete={setModalDelete} id={display.id}/>)}
           <div className="displayTitle">
             <h2>{display.nom_de_lambiance}</h2>
 
             {auth === "admin" && (
             <button className="linkBtn">
               <Link to="/updateDisplay" onClick={() => onsetPodId(display.id)}>
-                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+                <img src="/pen.svg" alt="update icon" className="updateIconDisplay" />
               </Link>
             </button>)}
+            {auth === "admin" && (
+            <button className="deleteBtn" onClick={() => setModalDelete(true)}>
+              
+                <img src="/trash.svg" alt="delete icon" className="deleteIcon" />
+              
+            </button>)}
+            
           </div>
           <div className="gallery">
             {display.photos.map((photo) => {
@@ -87,20 +101,28 @@ const DisplaysPage = ({
             })}
           </div>
         </div>
+        
       );
   });
 
   const tarifsList = tarifs.map((tarif) => {
     return (
       <div key={tarif.id} className="tarifContainer">
+        {modalDelete && (<DeleteModal onDelete={() => deleteTarif(tarif.id)}  onModalDelete={setModalDelete} id={tarif.id}/>)}
         <div className="titlePen">
-          {auth === "admin" && (
+        {auth === "admin" && (
             <button className="linkBtn">
               <Link to="/updateTarifs" onClick={() => onsetPodId(tarif.id)}>
-                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+                <img src="/pen.svg" alt="update icon" className="updateIconDisplay" />
               </Link>
-            </button>
-          )}
+            </button>)}
+            {auth === "admin" && (
+            <button className="deleteBtn" onClick={() => setModalDelete(true)}>
+              
+                <img src="/trash.svg" alt="delete icon" className="deleteIcon" />
+              
+            </button>)}
+          
           <p>{tarif.tarif_duree}</p>
         </div>
         <p className="price">{tarif.prix} €</p>
@@ -111,14 +133,21 @@ const DisplaysPage = ({
   const packagesList = sortedPackage.map((forfait) => {
     return (
       <div key={forfait.id} className="tarifContainer">
+        {modalDelete && (<DeleteModal onDelete={() => deletePackage(forfait.id)}  onModalDelete={setModalDelete} id={forfait.id}/>)}
         <div className="titlePen">
           {auth === "admin" && (
             <button className="linkBtn">
               <Link to="/updatePackages" onClick={() => onsetPodId(forfait.id)}>
-                <img src="/pen.svg" alt="update icon" className="updateIcon" />
+                <img src="/pen.svg" alt="update icon" className="updateIconDisplay" />
               </Link>
             </button>
           )}
+          {auth === "admin" && (
+            <button className="deleteBtn" onClick={() => setModalDelete(true)}>
+              
+                <img src="/trash.svg" alt="delete icon" className="deleteIcon" />
+              
+            </button>)}
           <p>
             {forfait.composition} ({forfait.duree})
           </p>
@@ -136,13 +165,16 @@ const DisplaysPage = ({
   return (
     <main className="displaysPage">
       <h1 className="titleDisplays desktopOnly">
-        {" "}
-        Salle{" "}
+        
+        Salle
+        {auth === "admin" && (
         <button className="linkBtn">
+        
           <Link to="/updateDisplay" onClick={() => onsetPodId(undefined)}>
             <img src="/plus.svg" alt="plus icon" className="addIcon" />
           </Link>
-        </button>
+        </button>)}
+        
       </h1>
       <p className="text mobileOnly">La salle qui s'adapte à vos envies</p>
       <section className="content">
@@ -169,7 +201,7 @@ const DisplaysPage = ({
                           <img
                             src="/pen.svg"
                             alt="update icon"
-                            className="updateIcon"
+                            className="updateIconDisplay"
                           />
                         </Link>
                       </button>
@@ -192,18 +224,22 @@ const DisplaysPage = ({
         <section className="rightSide desktopOnly">
           <h2 className="titleTarifs ">
             Tarifs
+            {auth === "admin" && (
             <button className="linkBtn">
+              
               <Link to="/updateTarifs" onClick={() => onsetPodId(undefined)}>
                 <img src="/plus.svg" alt="plus icon" className="addIcon" />
               </Link>
-            </button>
+            </button>)}
           </h2>
           <div className="containerTarifs">{tarifsList}</div>
-          <h2 className="titleTarifs">Forfaits <button className="linkBtn">
+          <h2 className="titleTarifs">Forfaits 
+          {auth === "admin" && (
+            <button className="linkBtn">
               <Link to="/updatePackages" onClick={() => onsetPodId(undefined)}>
                 <img src="/plus.svg" alt="plus icon" className="addIcon" />
               </Link>
-            </button></h2>
+            </button>)}</h2>
           <div className="containerTarifs">{packagesList}</div>
         </section>
       </section>

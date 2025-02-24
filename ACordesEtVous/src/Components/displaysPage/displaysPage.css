@@ -89,8 +89,8 @@
 	gap: 1rem;
 }
 
-.updateIcon {
-	padding-top: 0.5rem;
+.updateIconDisplay {
+	
 	width: 1.25em;
 }
 
@@ -117,7 +117,16 @@
 .linkBtn{
 	border: none;
 	background-color: transparent;
-	margin-left: 1rem;
+	
+}
+
+.deleteBtn{
+	border: none;
+	background-color: transparent;
+	
+}
+.deleteIcon{
+	width: 1rem;
 }
 
 @media (max-width: 768px) {
