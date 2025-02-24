@@ -66,27 +66,35 @@ const Guinguette = ({
           />
           <div className="updateContainer">
             <h3 className="subTitle">{schedule.precision}</h3>
-            <button className="linkBtn">
-              <Link
-                to="/updateSchedule"
-                onClick={() => onsetPodId(schedule.id)}
+            {auth === "admin" && (
+              <button className="linkBtn">
+                <Link
+                  to="/updateSchedule"
+                  onClick={() => onsetPodId(schedule.id)}
+                >
+                  <img
+                    src="/pen.svg"
+                    alt="update icon"
+                    className="updateIconDisplay"
+                  />
+                </Link>
+              </button>
+            )}
+            {auth === "admin" && (
+              <button
+                className="deleteBtn"
+                onClick={() => {
+                  setModalDelete(true);
+                  setItemToDelete(schedule.id);
+                }}
               >
                 <img
-                  src="/pen.svg"
-                  alt="update icon"
-                  className="updateIconDisplay"
+                  src="/trash.svg"
+                  alt="delete icon"
+                  className="deleteIcon"
                 />
-              </Link>
-            </button>
-            <button
-              className="deleteBtn"
-              onClick={() => {
-                setModalDelete(true);
-                setItemToDelete(schedule.id);
-              }}
-            >
-              <img src="/trash.svg" alt="delete icon" className="deleteIcon" />
-            </button>
+              </button>
+            )}
           </div>
         </React.Fragment>
       );
@@ -101,28 +109,35 @@ const Guinguette = ({
           )}
           <div className="updateContainer">
             <p className="days">• {schedule.jours}</p>
-
-            <button className="linkBtn">
-              <Link
-                to="/updateSchedule"
-                onClick={() => onsetPodId(schedule.id)}
+            {auth === "admin" && (
+              <button className="linkBtn">
+                <Link
+                  to="/updateSchedule"
+                  onClick={() => onsetPodId(schedule.id)}
+                >
+                  <img
+                    src="/pen.svg"
+                    alt="update icon"
+                    className="updateIconDisplay"
+                  />
+                </Link>
+              </button>
+            )}
+            {auth === "admin" && (
+              <button
+                className="deleteBtn"
+                onClick={() => {
+                  setModalDelete(true);
+                  setItemToDelete(schedule.id);
+                }}
               >
                 <img
-                  src="/pen.svg"
-                  alt="update icon"
-                  className="updateIconDisplay"
+                  src="/trash.svg"
+                  alt="delete icon"
+                  className="deleteIcon"
                 />
-              </Link>
-            </button>
-            <button
-              className="deleteBtn"
-              onClick={() => {
-                setModalDelete(true);
-                setItemToDelete(schedule.id);
-              }}
-            >
-              <img src="/trash.svg" alt="delete icon" className="deleteIcon" />
-            </button>
+              </button>
+            )}
           </div>
 
           <p className="precision">
@@ -141,28 +156,35 @@ const Guinguette = ({
           )}
           <div className="updateContainer">
             <p className="days">• {schedule.jours}</p>
-
-            <button className="linkBtn">
-              <Link
-                to="/updateSchedule"
-                onClick={() => onsetPodId(schedule.id)}
+            {auth === "admin" && (
+              <button className="linkBtn">
+                <Link
+                  to="/updateSchedule"
+                  onClick={() => onsetPodId(schedule.id)}
+                >
+                  <img
+                    src="/pen.svg"
+                    alt="update icon"
+                    className="updateIconDisplay"
+                  />
+                </Link>
+              </button>
+            )}
+            {auth === "admin" && (
+              <button
+                className="deleteBtn"
+                onClick={() => {
+                  setModalDelete(true);
+                  setItemToDelete(schedule.id);
+                }}
               >
                 <img
-                  src="/pen.svg"
-                  alt="update icon"
-                  className="updateIconDisplay"
+                  src="/trash.svg"
+                  alt="delete icon"
+                  className="deleteIcon"
                 />
-              </Link>
-            </button>
-            <button
-              className="deleteBtn"
-              onClick={() => {
-                setModalDelete(true);
-                setItemToDelete(schedule.id);
-              }}
-            >
-              <img src="/trash.svg" alt="delete icon" className="deleteIcon" />
-            </button>
+              </button>
+            )}
           </div>
           <p className="precision">
             {schedule.precision} {schedule.heure.slice(0, -3)}

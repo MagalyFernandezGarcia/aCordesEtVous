@@ -23,3 +23,8 @@ export const deleteSchedule = async(id: number) => {
    await deleteDatas("horaires", id)
    
 };
+
+export const deleteEvent = async(id: number) => {
+    await deleteDatas("evenements", id)
+    
+ };
