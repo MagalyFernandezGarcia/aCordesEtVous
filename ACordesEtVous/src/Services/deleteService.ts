@@ -18,3 +18,8 @@ export const deletePackage = async(id: number) => {
    await deleteDatas("forfaits", id)
    
 };
+
+export const deleteSchedule = async(id: number) => {
+   await deleteDatas("horaires", id)
+   
+};
