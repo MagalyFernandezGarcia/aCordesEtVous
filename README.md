@@ -60,9 +60,9 @@ C'est tout ce que la personne a demandé à avoir sur son site. Cependant...
 ### Uniquement en vue admin:
 ```bash
   -Des formulaires accessibles pour modifier les pods sans passer par WP
-    -Update =>ongoing 🚣
-    -Create
-    -Delete
+    -Update 👌
+    -Create 👌
+    -Delete =>ongoing 🚣
   -Un agenda des réservations
   -Gestion des stocks (matériel, nourriture et boissons)
   -Une fiche de facturation qui récapitule le nombre de matériel/boissons/nourriture en fonction du nombre de personnes (liés à la gestion des stocks)
