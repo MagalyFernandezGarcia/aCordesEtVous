@@ -51,6 +51,15 @@
 	display: flex;
 	justify-content: space-between;
 }
+.updateIconMaterial{
+	width: 1.25rem;
+	
+}
+.btnContainer{
+	margin-right: 1rem;
+	display: flex;
+	gap: 1rem;
+}
 @media (max-width: 768px) {
 	.desktopOnly {
 		display: none;

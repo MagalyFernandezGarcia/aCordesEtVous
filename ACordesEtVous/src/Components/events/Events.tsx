@@ -22,7 +22,6 @@ const Events = ({
   const [isPassedSelected, setIsPassedSelected] = useState(false);
   const [auth, setAuth] = useState("");
   const [modalDelete, setModalDelete] = useState(false);
-  
 
   useEffect(() => {
     onSetCurrentPage("Evènements");
@@ -112,8 +111,8 @@ const Events = ({
             onSetOpenModal={setOpenModal}
             onSetPodId={onsetPodId}
             auth={auth}
-			onSetModelDelete={setModalDelete}
-			modalDelete={modalDelete}
+            onSetModelDelete={setModalDelete}
+            modalDelete={modalDelete}
           />
         ) : (
           <DisplayEvents
@@ -122,8 +121,8 @@ const Events = ({
             onSetOpenModal={setOpenModal}
             onSetPodId={onsetPodId}
             auth={auth}
-			onSetModelDelete={setModalDelete}
-			modalDelete={modalDelete}
+            onSetModelDelete={setModalDelete}
+            modalDelete={modalDelete}
           />
         )}
       </section>
@@ -140,7 +139,7 @@ const DisplayEvents = ({
   onSetPodId,
   auth,
   onSetModelDelete,
-  modalDelete
+  modalDelete,
 }: {
   events: Evenement[];
   onSetImgEvent: React.Dispatch<React.SetStateAction<string>>;
@@ -148,9 +147,9 @@ const DisplayEvents = ({
   onSetPodId: React.Dispatch<React.SetStateAction<number | undefined>>;
   auth: string;
   onSetModelDelete: React.Dispatch<React.SetStateAction<boolean>>;
-  modalDelete : boolean
+  modalDelete: boolean;
 }) => {
-	const [itemToDelete, setItemToDelete] = useState(0);
+  const [itemToDelete, setItemToDelete] = useState(0);
   return (
     <>
       {events.map((event) => {
@@ -175,13 +174,19 @@ const DisplayEvents = ({
 
         return (
           <div key={event.id} className="cardEvent">
-			{modalDelete && itemToDelete === event.id && <DeleteModal onDelete={()=>deleteEvent(event.id)} onModalDelete={onSetModelDelete}/>}
+            {modalDelete && itemToDelete === event.id && (
+              <DeleteModal
+                onDelete={() => deleteEvent(event.id)}
+                onModalDelete={onSetModelDelete}
+              />
+            )}
             <button className="btnImg" onClick={handleClickImg}>
               <img src={event.banniere.guid} alt="" className="banniere" />
             </button>
             <div className="updateEventContainer">
               <p className="titleEvent">{event.nom_de_levenement}</p>
-              {auth === "admin" && <button className="linkBtn">
+              {auth === "admin" && (
+                <button className="linkBtn">
                   <Link to="/updateEvent" onClick={() => onSetPodId(event.id)}>
                     <img
                       src="/pen.svg"
@@ -189,18 +194,23 @@ const DisplayEvents = ({
                       className="updateIconEvent"
                     />
                   </Link>
-                </button>}
-				{auth === "admin" &&
-				<button
-              className="deleteBtn"
-              onClick={() => {
-                onSetModelDelete(true);
-                setItemToDelete(event.id);
-              }}
-            >
-              <img src="/trash.svg" alt="delete icon" className="deleteIconEvent" />
-            </button>}
-              
+                </button>
+              )}
+              {auth === "admin" && (
+                <button
+                  className="deleteBtn"
+                  onClick={() => {
+                    onSetModelDelete(true);
+                    setItemToDelete(event.id);
+                  }}
+                >
+                  <img
+                    src="/trash.svg"
+                    alt="delete icon"
+                    className="deleteIconEvent"
+                  />
+                </button>
+              )}
             </div>
 
             <div className="infoEvent">

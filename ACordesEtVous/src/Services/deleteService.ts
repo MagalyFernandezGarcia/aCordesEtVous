@@ -28,3 +28,6 @@ export const deleteEvent = async(id: number) => {
     await deleteDatas("evenements", id)
     
  };
+
+ export const deleteMaterial = async(id: number) => {
+    await deleteDatas("locations", id)}
