@@ -43,13 +43,13 @@ const MaterialsLocation = ({
 			<div key={material.id} className="cardLocation">
 				<img
 					src={material.image_de_lobjet.guid}
-					alt="photo du matériel"
+					alt={material.title.rendered}
 					className="locationImg"
 				/>
 				<div className="updateMaterialContainer">
 					<h2>{material.title.rendered}</h2>
 					{auth === "admin" && (
-						<Link to="/updateMaterials" onClick={() => onSetPodId(material.id)}>
+						<Link to="/updateMaterial" onClick={() => onSetPodId(material.id)}>
 							<img src="/pen.svg" alt="update icon" className="updateIcon" />
 						</Link>
 					)}
@@ -65,7 +65,11 @@ const MaterialsLocation = ({
 
 	return (
 		<main>
-			<h1 className="locationTitle desktopOnly">Location de matériel</h1>
+			<h1 className="locationTitle desktopOnly">Location de matériel {auth === "admin" && (
+						<Link to="/updateMaterial" onClick={() => onSetPodId(undefined)}>
+							<img src="/plus.svg" alt="update icon" className="addIcon" />
+						</Link>
+					)}</h1>
 			<section className="cardsContainer">{displayMaterials}</section>
 		</main>
 	);

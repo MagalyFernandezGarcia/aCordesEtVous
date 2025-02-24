@@ -99,7 +99,7 @@ const UpdateFormEvents = ({ podId }: { podId: number | undefined }) => {
     };
     const pod = await createEvent(data);
 	const uploadedFile = formData.get("img") as File ;
-	console.log(uploadedFile);
+	
 	
 	if (uploadedFile.size> 0) {
 				  const uploadedImages = await uploadMedia(uploadedFile, pod.id, pod.title.rendered)

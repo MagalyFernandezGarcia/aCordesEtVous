@@ -1,3 +1,5 @@
+import { Photo } from "./pods";
+
 export type Material = {
 	id: number;
 	date: string;
@@ -106,4 +108,19 @@ export type MaterialPut = {
 			templated: boolean;
 		}>;
 	};
+};
+
+export type MaterialPost = {
+	slug?: string;
+	status: string;
+	type?: string;
+	title:  string;
+	
+	template?: string;
+	class_list?: Array<string>;
+	objet: string;
+	description: string;
+	prix: string;
+	prix_description?: string;
+	image_de_lobjet?: Photo
 };
