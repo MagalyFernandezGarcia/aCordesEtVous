@@ -21,3 +21,11 @@
 	display: flex;
 	align-items: center;
 }
+.updateIconTarif{
+	width: 1.10rem;
+}
+
+.deleteIconTarif{
+	width: 1rem;
+	
+}
