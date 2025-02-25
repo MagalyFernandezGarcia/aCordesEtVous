@@ -261,7 +261,7 @@ const Guinguette = ({
       </section>
       <section className="section desktopOnly">
         <h2>
-          Forfaits{" "}
+          Forfaits
           {auth === "admin" && (
             <button className="linkBtn">
               <Link to="/updatePackages" onClick={() => onsetPodId(undefined)}>

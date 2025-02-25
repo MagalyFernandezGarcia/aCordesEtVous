@@ -19,7 +19,7 @@ const DisplayPageModal = ({ gallery, onOpenModal }: { gallery: Amenagement , onO
 
   return (
     
-    <section className="modal">
+    <section className="modal" onClick={close}>
         <span className="close" onClick={close}>&times;</span>
       <div className="modalContent">{showGallery}</div>
     </section>

@@ -8,7 +8,7 @@ const ModalEvent = ({
   onOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <section className="modalEvent">
+    <section className="modalEvent" onClick={()=> onOpenModal(false)}>
       <span className="closeEvent" onClick={() => onOpenModal(false)}>
         &times;
       </span>

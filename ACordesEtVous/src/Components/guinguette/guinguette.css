@@ -96,6 +96,7 @@
     }
     .subTitle{
         font-size: medium;
+        max-width: 15rem;
     }
     .section{
         align-items: start;

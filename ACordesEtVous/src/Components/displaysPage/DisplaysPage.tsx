@@ -234,6 +234,12 @@ const DisplaysPage = ({
             {displays.map((display, id) => {
               return (
                 <div className="galleryContainer" key={display.id}>
+                  {modalDelete && itemToDelete === display.id && (
+            <DeleteModal
+              onDelete={() => deleteDisplay(display.id)}
+              onModalDelete={setModalDelete}
+            />
+          )}
                   <button className="photoBtn" onClick={() => showGallery(id)}>
                     <img
                       className="photo"
@@ -256,6 +262,22 @@ const DisplaysPage = ({
                         </Link>
                       </button>
                     )}
+                      {auth === "admin" && (
+              <button
+                className="deleteBtn"
+                onClick={() => {
+                  setModalDelete(true);
+                  setItemToDelete(display.id);
+                }}
+              >
+                <img
+                  src="/trash.svg"
+                  alt="delete icon"
+                  className="deleteIcon"
+                />
+              </button>
+            )}
+                    
 
                     <p className="displayName">{display.nom_de_lambiance}</p>
                   </div>
