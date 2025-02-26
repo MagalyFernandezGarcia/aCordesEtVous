@@ -1,15 +1,7 @@
-
-
-
-
 const { VITE_URL_WP } = import.meta.env;
 
-
-
-
-
 export const fetchDatasFromWP = async <T>(route: string): Promise<T[]> => {
-	const url = "http://" + VITE_URL_WP + "wp/v2/" + route;
+	const url = "https://" + VITE_URL_WP + "wp/v2/" + route;
 
 	const response = await fetch(url);
 
@@ -20,19 +12,15 @@ export const fetchDatasFromWPById = async <T>(
 	route: string,
 	id: number
 ): Promise<T> => {
-	const url = "http://" + VITE_URL_WP + "wp/v2/" + route + "/" + id;
+	const url = "https://" + VITE_URL_WP + "wp/v2/" + route + "/" + id;
 
 	const response = await fetch(url);
 
 	return response.json();
 };
 
-
 export const updateDatas = async <T>(route: string, id: number, data: T) => {
-	const url = `http://${VITE_URL_WP}wp/v2/${route}/${id}`;
-	
-	
-	
+	const url = `https://${VITE_URL_WP}wp/v2/${route}/${id}`;
 
 	const response = await fetch(url, {
 		method: "PUT",
@@ -46,12 +34,10 @@ export const updateDatas = async <T>(route: string, id: number, data: T) => {
 	if (!response.ok) {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}
-	
 };
 
-
 export const deleteDatas = async (route: string, id: number) => {
-	const url = `http://${VITE_URL_WP}wp/v2/${route}/${id}?force=true`;
+	const url = `https://${VITE_URL_WP}wp/v2/${route}/${id}?force=true`;
 
 	const response = await fetch(url, {
 		method: "DELETE",
@@ -65,15 +51,11 @@ export const deleteDatas = async (route: string, id: number) => {
 	if (!response.ok) {
 		throw new Error(`Error: ${response.status} ${response.statusText}`);
 	}
-
-	
-	
 };
 
-export const createDatas= async <T>(route: string,podData: T ) => {
-	const url = `http://${VITE_URL_WP}wp/v2/${route}`;
-	
-	
+export const createDatas = async <T>(route: string, podData: T) => {
+	const url = `https://${VITE_URL_WP}wp/v2/${route}`;
+
 	const response = await fetch(url, {
 		method: "POST",
 		headers: {
@@ -85,8 +67,6 @@ export const createDatas= async <T>(route: string,podData: T ) => {
 	});
 	if (!response.ok) {
 		throw new Error("Failed to create pod");
-	  }
-	return await response.json()
-	
-
-}
+	}
+	return await response.json();
+};
