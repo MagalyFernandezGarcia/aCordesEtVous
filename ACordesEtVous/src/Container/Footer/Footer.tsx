@@ -11,11 +11,15 @@ const Footer = () => {
 					>
 						<img
 							className="socialLogo"
-							src="/facebook.svg"
+							src="https://acordesetvous.faaaster.dev/wp-content/uploads/2025/02/facebook.png"
 							alt="facebook logo"
 						/>
 					</a>
-					<img className="socialLogo" src="/insta.svg" alt="instagram logo" />
+					<img
+						className="socialLogo"
+						src="https://acordesetvous.faaaster.dev/wp-content/uploads/2025/02/insta.png"
+						alt="instagram logo"
+					/>
 				</div>
 			</div>
 			<div className="footerLinks">

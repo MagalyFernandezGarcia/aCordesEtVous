@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import "./header.css";
+
 const Header = ({ currentPage }: { currentPage: string }) => {
 	return (
 		<header className="headerContainer">
 			<section className="logoHomeContainer">
 				<Link to="/" className="linkContainer">
-					<img className="logo" src="/logo.jpg" alt="logo" />
+					<img
+						className="logo"
+						src="https://acordesetvous.faaaster.dev/wp-content/uploads/2025/02/logo.jpg"
+						alt="logo"
+					/>
 
 					<h1 className="currentPage desktop">A Cordes et Vous</h1>
 				</Link>
